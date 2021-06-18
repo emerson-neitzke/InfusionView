@@ -15,6 +15,8 @@ import re
 import sys
 
 
-
 # Codigo de inicializacao
 print "Inicializando modulos..."
+
+def display():
+	print "Display"
