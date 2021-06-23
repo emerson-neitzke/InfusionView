@@ -6,11 +6,12 @@
 
 import wx
 import paciente
+import dispositivo
 
 
 """Class Leito
 """
-class LeitoPanel(wx.Panel):
+class Leito(wx.Panel):
     def __init__(self, parent, id, posxy, sizexy, color): #parametrized constructor
     	self.panel = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_SIMPLE)
 	self.SetBackgroundColour(color)
@@ -22,6 +23,9 @@ class LeitoPanel(wx.Panel):
 	"""atributos privados(-)
 	"""
 	self.child_paciente = paciente.Paciente(self, id, (2,2), (100,135), 'GRAY')
+	#self.child_dispositivo1 = dispositivo.Dispositivo(self, 1, (2+100,2), (280,135), 'BLUE')
+	#self.child_dispositivo2 = dispositivo.Dispositivo(self, 2, (2+100+281,2), (280,135), 'ORANGE')
+	#self.child_dispositivo3 = dispositivo.Dispositivo(self, 3, (2+100+281*2,2), (280,135), 'BLUE')
 
 
 	"""metodos

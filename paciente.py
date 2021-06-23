@@ -24,11 +24,12 @@ class Paciente(wx.Panel):
 	self.data_saida = ''
 	self.idade = 0
 	self.genero = ''
+	self.tipo_sanguineo = ''
 
-	self.device = wx.StaticText(self, -1, "%02d" % id, (40, 16))
-	self.device.SetForegroundColour('WHITE')
+	self.id = wx.StaticText(self, -1, "%02d" % id, (40, 16))
+	self.id.SetForegroundColour('WHITE')
         self.font = wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
-        self.device.SetFont(self.font)
+        self.id.SetFont(self.font)
 
 	"""metodos
 	"""
@@ -41,7 +42,7 @@ class Paciente(wx.Panel):
 
 
     def dar_alta(self, prontuario):
-	self.data_saida = 0
+	self.data_saida = '01/01/2021'
 
 
 
