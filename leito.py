@@ -2,7 +2,7 @@
 
 """Modulo Leito
 
-"""
+
 import wx
 
 class LeitoPanel(wx.Panel):
@@ -11,7 +11,7 @@ class LeitoPanel(wx.Panel):
 		self.id = id 
 		
 
-
+"""
 
 # Codigo de inicializacao
 print "Inicializando modulo Leito..."
