@@ -129,10 +129,14 @@ class Dispositivo(wx.Panel):	#classe herdada da classe "Panel"
 
 class MyCanal(wx.Frame):	#classe herdada da classe "Frame"
 	def __init__(self, posx, posy, color):
-          wx.Frame.__init__(self, None, wx.ID_ANY, "", size=(280,133), style = wx.CAPTION | wx.STAY_ON_TOP)
+          wx.Frame.__init__(self, None, wx.ID_ANY, "", size=(280,137), style = wx.STAY_ON_TOP)
           self.SetPosition(wx.Point(posx, posy))
           self.SetBackgroundColour(color)
           self.Show(True)
+          self.flux = wx.StaticText(self, -1, "100.0", (150, 160))
+          self.flux.SetForegroundColour('WHITE')
+          self.font = wx.Font(16, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+          self.flux.SetFont(self.font)
 
 
 
