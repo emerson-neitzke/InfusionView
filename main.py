@@ -59,7 +59,7 @@ class MyForm(wx.Frame):	#classe herdada da classe "Frame"
 		#self.child_canal_1 = dispositivo.MyCanal(94, 2,'#2A6DF7')
 		#self.child_canal_11 = dispositivo.Dispositivo(self, -1, (94, 2), (280, 135), '#2A6DF7')
 		#self.child_canal_11 = dispositivo.Dispositivo(self, -1, (94, 3), (280, 132), '#333333')
-		self.child_canal_11 = dispositivo.Canal(self, -1, (94, 3), (280, 132), '#2A6DF7')				
+		self.child_canal_11 = dispositivo.Canal(self, -1, (94, 3), (280, 131), '#2A6DF7')				
 		#self.child_canal_2 = dispositivo.MyCanal(94, 161,'#F55502')
 
 if __name__ == "__main__":

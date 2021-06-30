@@ -9,7 +9,7 @@ import wx
 """
 class Paciente(wx.Panel):	#classe herdada da classe "Panel"
     def __init__(self, parent, id, posxy, sizexy, color):
-    	self.paciente = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_SIMPLE)
+    	self.paciente = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_NONE)
 	self.SetBackgroundColour(color)
 	self.Bind(wx.EVT_LEFT_UP, self.onMouseLeftClicked)
 

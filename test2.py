@@ -27,6 +27,9 @@ class MyPanel(wx.Panel):	#classe herdada da classe "Panel"
         else:
             event.Skip()
 
+    def onSetKey(self, key):
+        print(key)
+
 
 class MyCanal(wx.Frame):	#classe herdada da classe "Frame"
 	def __init__(self, posx, posy, color):
@@ -44,19 +47,20 @@ class MyForm(wx.Frame):	#classe herdada da classe "Frame"
 		#self.ShowFullScreen(True)
 		self.Show(True)
 
-		panel = MyPanel(self, -1)
+		self.panel = MyPanel(self, -1)
+		self.panel.onSetKey(11)
 		#self.canal1 = MyCanal(-10, -10, '#f78700')
 		#self.canal2 = MyCanal(-10, 230, '#2d85cf')
 		#self.canal.Show(True)
 		val = '100.00                                                '
-		flux = wx.StaticText(panel, -1, val, (50, 88))
+		flux = wx.StaticText(self.panel, -1, val, (50, 88))
 		flux.SetForegroundColour('WHITE')
 		font = wx.Font(22,  wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
 		flux.SetFont(font)
 		flux.Wrap(400)
 
 		val = '200.00        '
-		flux = wx.StaticText(panel, -1, val, (150, 88))
+		flux = wx.StaticText(self.panel, -1, val, (150, 88))
 		flux.SetForegroundColour('WHITE')
 		font = wx.Font(12,  wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
 		flux.SetFont(font)

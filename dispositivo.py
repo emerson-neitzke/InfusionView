@@ -9,6 +9,44 @@ import leito
 """Classe Dispositivo
 """
 
+class widgtBat(wx.Panel):	#classe herdada da classe "Panel"
+    def __init__(self, parent, id, caption, bars, posxy, sizexy, color):
+    	wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_NONE)
+	self.SetBackgroundColour(color)
+
+	"""class variable shared by all instances
+	"""
+	tipo = 'Status'
+
+	"""instance variable unique to each instance
+	"""
+
+	self.wdgtb = widgtBat_body(self, -1, "",(4, 1), (19,8), '#3c4043')
+	#self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#5EBA7D')
+	#self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), '#5EBA7D')
+	#self.wdgtc3 = widgtBat_cel(self, -1, "",(17, 2), (5,6), '#5EBA7D')
+	#self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), 'GRAY')
+	#self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), 'GRAY')
+	#self.wdgtc3 = widgtBat_cel(self, -1, "",(17, 2), (5,6), 'GRAY')
+
+    def ShowPos(self, position):
+        if position == 0:
+          self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), 'GRAY')
+          self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), 'GRAY')
+          self.wdgtc3 = widgtBat_cel(self, -1, "",(17, 2), (5,6), 'GRAY')
+        elif position == 1:
+          self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#5EBA7D')     
+        elif position == 2:
+	     self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#5EBA7D')
+	     self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), '#5EBA7D')
+        elif position == 3:
+          self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#5EBA7D')
+          self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), '#5EBA7D')
+          self.wdgtc3 = widgtBat_cel(self, -1, "",(17, 2), (5,6), '#5EBA7D')        
+          
+        print (position+1)
+
+
 class widgtBat_body(wx.Panel):	#classe herdada da classe "Panel"
     def __init__(self, parent, id, caption, posxy, sizexy, color):
     	self.panel = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_NONE)
@@ -35,23 +73,6 @@ class widgtBat_cel(wx.Panel):	#classe herdada da classe "Panel"
 	"""instance variable unique to each instance
 	"""
 	self.nome = ''
-	
-class widgtBat(wx.Panel):	#classe herdada da classe "Panel"
-    def __init__(self, parent, id, caption, posxy, sizexy, color):
-    	self.panel = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_NONE)
-	self.SetBackgroundColour(color)
-
-	"""class variable shared by all instances
-	"""
-	tipo = 'Status'
-
-	"""instance variable unique to each instance
-	"""
-	self.nome = ''	
-	self.wdgtb = widgtBat_body(self, -1, "BAT",(4, 1), (19,8), '#3c4043')
-	self.wdgtc1 = widgtBat_cel(self, -1, "BAT",(5, 2), (5,6), '#5EBA7D')
-	self.wdgtc2 = widgtBat_cel(self, -1, "BAT",(11, 2), (5,6), '#5EBA7D')
-	self.wdgtc3 = widgtBat_cel(self, -1, "BAT",(17, 2), (5,6), '#5EBA7D')	
 
 class Status(wx.Panel):	#classe herdada da classe "Panel"
     def __init__(self, parent, id, caption, posxy, sizexy, color):
@@ -72,8 +93,9 @@ class Status(wx.Panel):	#classe herdada da classe "Panel"
 	sizer = wx.BoxSizer(wx.HORIZONTAL)
 	sizer.Add(self.serial, 1, flag = wx.CENTER)
 	self.SetSizer(sizer)
-	self.widg = widgtBat(self, -1, "BAT",(2, 4), (24,10), 'GRAY')
 
+	self.batery = widgtBat(self, -1, "", 0, (2, 4), (24,10), 'GRAY')
+	self.batery.ShowPos(0)
 
 class VolRestante(wx.Panel):	#classe herdada da classe "Panel"
     def __init__(self, parent, id, posxy, sizexy, color):
@@ -142,7 +164,7 @@ class Canal(wx.Panel):	#classe herdada da classe "Panel"
 
 	self.tempo_restante = wx.StaticText(self, -1, "12:00:00", (145, 67))
 	self.tempo_restante.SetForegroundColour('WHITE')
-	self.font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+	self.font = wx.Font(11, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
 	self.tempo_restante.SetFont(self.font)
 
 	self.status = Status(self, 1, "TCH18090123",(-5,-2), (295,18), '#3C4043')
