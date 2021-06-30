@@ -22,12 +22,6 @@ class widgtBat(wx.Panel):	#classe herdada da classe "Panel"
 	"""
 
 	self.wdgtb = widgtBat_body(self, -1, "",(4, 1), (19,8), '#3c4043')
-	#self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#5EBA7D')
-	#self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), '#5EBA7D')
-	#self.wdgtc3 = widgtBat_cel(self, -1, "",(17, 2), (5,6), '#5EBA7D')
-	#self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), 'GRAY')
-	#self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), 'GRAY')
-	#self.wdgtc3 = widgtBat_cel(self, -1, "",(17, 2), (5,6), 'GRAY')
 
     def ShowPos(self, position):
         if position == 0:
@@ -35,10 +29,10 @@ class widgtBat(wx.Panel):	#classe herdada da classe "Panel"
           self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), 'GRAY')
           self.wdgtc3 = widgtBat_cel(self, -1, "",(17, 2), (5,6), 'GRAY')
         elif position == 1:
-          self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#5EBA7D')     
+          self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#F5520E')     #red   
         elif position == 2:
-	     self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#5EBA7D')
-	     self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), '#5EBA7D')
+	     self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#5EBA7D')     #green
+	     self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), '#5EBA7D')    #green
         elif position == 3:
           self.wdgtc1 = widgtBat_cel(self, -1, "",(5, 2), (5,6), '#5EBA7D')
           self.wdgtc2 = widgtBat_cel(self, -1, "",(11, 2), (5,6), '#5EBA7D')
@@ -95,7 +89,7 @@ class Status(wx.Panel):	#classe herdada da classe "Panel"
 	self.SetSizer(sizer)
 
 	self.batery = widgtBat(self, -1, "", 0, (2, 4), (24,10), 'GRAY')
-	self.batery.ShowPos(0)
+	self.batery.ShowPos(2)
 
 class VolRestante(wx.Panel):	#classe herdada da classe "Panel"
     def __init__(self, parent, id, posxy, sizexy, color):
@@ -149,26 +143,66 @@ class Canal(wx.Panel):	#classe herdada da classe "Panel"
 
 	"""instance variable unique to each instance
 	"""
-	self.nome = ''
-	caption = '100.00                                                '
-	self.flux = wx.StaticText(self, -1, caption, (50, 60))
-	self.flux.SetForegroundColour('WHITE')
-	self.font = wx.Font(22, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
-	self.flux.SetFont(self.font)
-	self.flux.Wrap(400)
-	
-	self.medicamento = wx.StaticText(self, -1, "Paroxetina     ", (16, 22))
+	medicamento = "Paroxetina     "
+	self.medicamento = wx.StaticText(self, -1, medicamento, (14, 22))
 	self.medicamento.SetForegroundColour('WHITE')
 	self.font = wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
 	self.medicamento.SetFont(self.font)
 
-	self.tempo_restante = wx.StaticText(self, -1, "12:00:00", (145, 67))
+	fluxo = '100                                                '
+	self.fluxo = wx.StaticText(self, -1, fluxo, (14, 55))
+	self.fluxo.SetForegroundColour('WHITE')
+	self.font = wx.Font(22, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
+	self.fluxo.SetFont(self.font)
+	self.fluxo.Wrap(400)
+	
+	dot = '.'
+	self.dot = wx.StaticText(self, -1, dot, (64, 67))
+	self.dot.SetForegroundColour('WHITE')
+	self.font = wx.Font(12, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
+	self.dot.SetFont(self.font)
+
+	decimal = '05'
+	self.decimal = wx.StaticText(self, -1, decimal, (71, 67))
+	self.decimal.SetForegroundColour('WHITE')
+	self.font = wx.Font(12, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
+	self.decimal.SetFont(self.font)
+
+	unity = 'ml/h'
+	self.unidade = wx.StaticText(self, -1, unity, (91, 67))
+	self.unidade.SetForegroundColour('WHITE')
+	self.font = wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+	self.unidade.SetFont(self.font)
+	
+	tempo = "12:00:00                                                          "
+	self.tempo_restante = wx.StaticText(self, -1, tempo, (190, 55))
 	self.tempo_restante.SetForegroundColour('WHITE')
-	self.font = wx.Font(11, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
+	self.font = wx.Font(15, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
 	self.tempo_restante.SetFont(self.font)
+	self.tempo_restante.Wrap(400)
 
-	self.status = Status(self, 1, "TCH18090123",(-5,-2), (295,18), '#3C4043')
-
+	lbl_vol_infdo = "Volume Infundido"
+	self.lbl_volume_infdo = wx.StaticText(self, -1, lbl_vol_infdo, (14, 92))
+	self.lbl_volume_infdo.SetForegroundColour('WHITE')
+	self.font = wx.Font(7, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+	self.lbl_volume_infdo.SetFont(self.font)
+	
+	vol_infdo = "298.5/1000                                                  "
+	self.volume_infdo = wx.StaticText(self, -1, vol_infdo, (14, 102))
+	self.volume_infdo.SetForegroundColour('WHITE')
+	self.font = wx.Font(13, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
+	self.volume_infdo.SetFont(self.font)
+	self.volume_infdo.Wrap(400)
+	
+	lbl_vol_infdo_unity = "ml/h"
+	self.lbl_volume_infdo_unity = wx.StaticText(self, -1, lbl_vol_infdo_unity, (101, 107))
+	self.lbl_volume_infdo_unity.SetForegroundColour('WHITE')
+	self.font = wx.Font(8, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+	self.lbl_volume_infdo_unity.SetFont(self.font)
+	self.lbl_volume_infdo_unity.Wrap(400)	
+	
+	serial = "TCH18090123"
+	self.status = Status(self, 1, serial, (-5,-2), (295,18), '#3C4043')
 
 class Dispositivo(wx.Panel):	#classe herdada da classe "Panel"
     def __init__(self, parent, id, posxy, sizexy, color):
