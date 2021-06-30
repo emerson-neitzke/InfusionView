@@ -10,6 +10,7 @@ import udp_server
 import leito
 import paciente
 import dispositivo
+
  
 
 def main():
@@ -55,9 +56,11 @@ class MyForm(wx.Frame):	#classe herdada da classe "Frame"
 		self.leito14 = leito.Leito(self, 14, (960,5*135), (960,135), '#232728')
 		self.leito15 = leito.Leito(self, 15, (960,6*135), (960,135), '#232728')
 		self.leito16 = leito.Leito(self, 16, (960,7*135), (960,135), '#232728')
-		self.child_canal_1 = dispositivo.MyCanal(94, 2,'#2A6DF7')
-		self.child_canal_11 = dispositivo.Dispositivo(self, -1, (281, 2), (280, 137), '#2A6DF7')
-		self.child_canal_2 = dispositivo.MyCanal(94, 161,'#F55502')
+		#self.child_canal_1 = dispositivo.MyCanal(94, 2,'#2A6DF7')
+		#self.child_canal_11 = dispositivo.Dispositivo(self, -1, (94, 2), (280, 135), '#2A6DF7')
+		#self.child_canal_11 = dispositivo.Dispositivo(self, -1, (94, 3), (280, 132), '#333333')
+		self.child_canal_11 = dispositivo.Canal(self, -1, (94, 3), (280, 132), '#2A6DF7')				
+		#self.child_canal_2 = dispositivo.MyCanal(94, 161,'#F55502')
 
 if __name__ == "__main__":
 	main()

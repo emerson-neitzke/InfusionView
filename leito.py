@@ -24,7 +24,7 @@ class Leito(wx.Panel):	#classe herdada da classe "Panel"
 
 	"""instance variable unique to each instance
 	"""
-	self.child_paciente = paciente.Paciente(self, id, (2,2), (88,135), 'GRAY')
+	self.child_paciente = paciente.Paciente(self, id, (2,2), (88,135), '#3C4043')
 	#self.child_dispositivo1 = dispositivo.Canal(self, 1, (89,2), (280,135), '#2A6DF7')
 	#self.child_dispositivo2 = dispositivo.Canal(self, 2, (370,2), (280,135), '#EF850F')
 	#self.child_canal = dispositivo.MyCanal(92, -20,'#2A6DF7')

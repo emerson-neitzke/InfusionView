@@ -9,8 +9,9 @@ import wx
 """
 class Paciente(wx.Panel):	#classe herdada da classe "Panel"
     def __init__(self, parent, id, posxy, sizexy, color):
-    	self.panel = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_SIMPLE)
+    	self.paciente = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_SIMPLE)
 	self.SetBackgroundColour(color)
+	self.Bind(wx.EVT_LEFT_UP, self.onMouseLeftClicked)
 
 	"""class variable shared by all instances
 	"""
@@ -28,11 +29,13 @@ class Paciente(wx.Panel):	#classe herdada da classe "Panel"
 
 	self.id = wx.StaticText(self, -1, "%02d" % id, (33, 16))
 	self.id.SetForegroundColour('WHITE')
-	self.font = wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+	self.font = wx.Font(12, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
 	self.id.SetFont(self.font)
 
 	"""metodos
 	"""
+    def onMouseLeftClicked(self, event):
+        print("Left button of the mouse was clicked\n")
 
 
 
