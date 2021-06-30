@@ -56,6 +56,7 @@ class MyForm(wx.Frame):	#classe herdada da classe "Frame"
 		self.leito15 = leito.Leito(self, 15, (960,6*135), (960,135), '#232728')
 		self.leito16 = leito.Leito(self, 16, (960,7*135), (960,135), '#232728')
 		self.child_canal_1 = dispositivo.MyCanal(94, 2,'#2A6DF7')
+		self.child_canal_11 = dispositivo.Dispositivo(self, -1, (281, 2), (280, 137), '#2A6DF7')
 		self.child_canal_2 = dispositivo.MyCanal(94, 161,'#F55502')
 
 if __name__ == "__main__":
