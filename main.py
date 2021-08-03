@@ -10,7 +10,7 @@ import udp_server
 import leito
 import paciente
 import dispositivo
-
+import cadastro
  
 
 def main():
@@ -40,6 +40,7 @@ class MyForm(wx.Frame):	#classe herdada da classe "Frame"
 
 		self.panel = MyPanel(self)
 
+        #instancia "leitos"
 		self.leito1 = leito.Leito(self, 1, (1,1), (960,135), '#232728')
 		self.leito2 = leito.Leito(self, 2, (1,135), (960,135), '#232728')
 		self.leito3 = leito.Leito(self, 3, (1,2*135), (960,135), '#232728')
