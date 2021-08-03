@@ -39,15 +39,23 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lbl_data_entrada.SetFont(self.font)
           
           self.data_entrada = wx.TextCtrl(self, pos = (215, 70), size = (200,25))          
-          
+
           #CPF
           self.lbl_cpf = wx.StaticText(self, -1, "CPF ", (10, 98))
           self.lbl_cpf.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
           self.lbl_cpf.SetFont(self.font)
+
+          self.cpf = wx.TextCtrl(self, pos = (10, 115), size = (200,25))
+
+          #Telefone
+          self.lbl_telefone = wx.StaticText(self, -1, "Telefone ", (215, 98))
+          self.lbl_telefone.SetForegroundColour('WHITE')
+          self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+          self.lbl_telefone.SetFont(self.font)
           
-          self.cpf = wx.TextCtrl(self, pos = (10, 115), size = (200,25))          
-          
+          self.telefone = wx.TextCtrl(self, pos = (215, 115), size = (200,25))          
+
           
           
 
