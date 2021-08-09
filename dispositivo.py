@@ -199,8 +199,8 @@ class Canal(wx.Panel):	#classe herdada da classe "Panel"
 	self.lbl_volume_infdo_unity.SetForegroundColour('WHITE')
 	self.font = wx.Font(8, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
 	self.lbl_volume_infdo_unity.SetFont(self.font)
-	self.lbl_volume_infdo_unity.Wrap(400)	
-	
+	self.lbl_volume_infdo_unity.Wrap(400)
+
 	serial = "TCH18090123"
 	self.status = Status(self, 1, serial, (-5,-2), (295,18), '#3C4043')
 
