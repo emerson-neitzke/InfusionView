@@ -11,7 +11,7 @@ import leito
 import paciente
 import dispositivo
 import cadastro
- 
+import password
 
 def main():
 	print "Inicializando modulo principal..."

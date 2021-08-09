@@ -4,18 +4,20 @@
 """
 
 import wx
+import password
 
 """Classe Cadastro
 """
 class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 	def __init__(self, idef, posx, posy, color):  #parametrized constructor
-          #wx.Frame.__init__(self, None, wx.ID_ANY, "Cadastro de Pacientes e Dispositivos", size=(800,320), style = wx.STAY_ON_TOP)
-          wx.Frame.__init__(self, None, wx.ID_ANY, "Cadastro Leito" + str(idef), size=(870,320), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
-          self.SetPosition(wx.Point(posx, posy))
+          self.frm = wx.Frame.__init__(self, None, wx.ID_ANY, "Cadastro Leito" + str(idef), size=(870,300), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
+          #self.SetPosition(wx.Point(posx, posy))
+          self.Centre()
           self.SetBackgroundColour(color)
           self.Show(True)
 
           self.mypanel = wx.Panel(self, -1)
+
           self.dispositivos = ['TCH18023190', 'TCH18023191', 'TCH18023192', 'TCH18023193', 'TCH18023194', 'TCH18023195', 'TCH18023187', 'TCH18023188']
 
           #Nome  
@@ -59,7 +61,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.txt_telefone = wx.TextCtrl(self, pos = (215, 115), size = (200,25))
 
           #Genero
-          self.lbl_genero = wx.StaticText(self, -1, "Genero ", (10, 140))
+          self.lbl_genero = wx.StaticText(self, -1, "Genero ", (10, 141))
           self.lbl_genero.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
           self.lbl_genero.SetFont(self.font)
@@ -67,7 +69,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.txt_genero = wx.TextCtrl(self, pos = (10, 155), size = (200,25))
 
           #Data Nascimento
-          self.lbl_birth_day = wx.StaticText(self, -1, "Data Nascimento ", (215, 140))
+          self.lbl_birth_day = wx.StaticText(self, -1, "Data Nascimento ", (215, 141))
           self.lbl_birth_day.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
           self.lbl_birth_day.SetFont(self.font)
@@ -83,8 +85,9 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.txt_medico = wx.TextCtrl(self, pos = (10, 200), size = (400,25))
 
           #buttons
-          self.btn_cadastrar = wx.Button(self, -1, 'Cadastrar(+)', pos = (10, 235), size = (180, 25))
-          self.btn_alta = wx.Button(self, -1, 'Dar Alta(-)', pos = (228, 235), size = (180, 25))
+          self.btn_cadastrar = wx.Button(self, -1, 'Cadastrar(+)', pos = (10, 235), size = (130, 25))
+          self.btn_editar = wx.Button(self, -1, 'Editar', pos = (145, 235), size = (130, 25))          
+          self.btn_alta = wx.Button(self, -1, 'Dar Alta(-)', pos = (280, 235), size = (130, 25))
           
           #
           self.lbl_disp_plus = wx.StaticText(self, -1, "Dispositivos Disponiveis  ", (428, 12))
@@ -108,6 +111,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           #events
           self.btn_cadastrar.Bind(wx.EVT_BUTTON, self.CadastrarOnClicked)
+          self.btn_editar.Bind(wx.EVT_BUTTON, self.EditarOnClicked)
           self.btn_alta.Bind(wx.EVT_BUTTON, self.AltaOnClicked)
           self.btn_disp_right.Bind(wx.EVT_BUTTON, self.RightOnClicked)
           self.btn_disp_left.Bind(wx.EVT_BUTTON, self.LeftOnClicked)
@@ -121,14 +125,26 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           #self.txt_disp_disp.AppendText("TCH1921681105\n")
           #self.lst_disp_disp.Append("TCH1921681105")
 
+	def EditarOnClicked(self, event):
+          print("click button Editar")
+          self.passw = password.Password(-1, 960, 540, '#3C4043')
+
 	def AltaOnClicked(self, event):
-          print("click button alta", self.txt_disp_disp.GetLineText(1))          
+          print("click button alta", self.txt_disp_disp.GetLineText(1))
 
 	def RightOnClicked(self, event):
-          print("click button Right", self.txt_disp_disp.PositionToXY(12))          
+          self.item = self.lst_disp_disp.GetSelection()
+          self.lst_disp_aloc.Append(self.lst_disp_disp.GetString(self.item))
+          self.lst_disp_disp.Deselect(self.item)
+          self.lst_disp_disp.Delete(self.item)
+          print("click button Right", str(self.item))
 
 	def LeftOnClicked(self, event):
-          print("click button Left")
+          self.item = self.lst_disp_aloc.GetSelection()
+          self.lst_disp_disp.Append(self.lst_disp_aloc.GetString(self.item))
+          self.lst_disp_aloc.Delete(self.item)
+          print("click button Right", str(self.item))
+
 
 	def OnDispDispRowSelected(self, event):
           #print("Row selected ", self.lst_disp_disp.GetSelection)
