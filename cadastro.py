@@ -8,9 +8,9 @@ import wx
 """Classe Cadastro
 """
 class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
-	def __init__(self, posx, posy, color):  #parametrized constructor
+	def __init__(self, idef, posx, posy, color):  #parametrized constructor
           #wx.Frame.__init__(self, None, wx.ID_ANY, "Cadastro de Pacientes e Dispositivos", size=(800,320), style = wx.STAY_ON_TOP)
-          wx.Frame.__init__(self, None, wx.ID_ANY, "Cadastro", size=(880,320), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
+          wx.Frame.__init__(self, None, wx.ID_ANY, "Cadastro Leito" + str(idef), size=(870,320), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
           self.SetPosition(wx.Point(posx, posy))
           self.SetBackgroundColour(color)
           self.Show(True)
@@ -84,15 +84,25 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           #buttons
           self.cadastrar = wx.Button(self, -1, 'Cadastrar(+)', pos = (10, 235), size = (180, 25))
           self.alta = wx.Button(self, -1, 'Dar Alta(-)', pos = (228, 235), size = (180, 25))
+          
+          #
+          self.lbl_disp_plus = wx.StaticText(self, -1, "Dispositivos Disponiveis  ", (428, 12))
+          self.lbl_disp_plus.SetForegroundColour('WHITE')
+          self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+          self.lbl_disp_plus.SetFont(self.font)          
+
+          self.dispositivo_p = wx.TextCtrl(self, pos = (428, 28), size = (180,195), style = wx.TE_MULTILINE|wx.TE_READONLY|wx.TE_AUTO_URL)          
+          
           self.dispositivo_plus = wx.Button(self, -1, '->', pos = (615, 28), size = (50, 25))
-          self.dispositivo_minus = wx.Button(self, -1, '<-', pos = (615, 60), size = (50, 25))
-          #button2 = wx.Button(self, -1, '-', (10, 60))
-          #self.Bind(wx.EVT_BUTTON, self.OnPlus, id=button1.GetId())
-          #self.Bind(wx.EVT_BUTTON, self.OnMinus, id=button2.GetId())
 
-          self.dispositivo_p = wx.TextCtrl(self, pos = (428, 28), size = (180,195), style = wx.TE_MULTILINE|wx.TE_READONLY|wx.TE_AUTO_URL)
+          #  
+          self.lbl_disp_plus = wx.StaticText(self, -1, "Dispositivos Alocados  ", (672, 12))
+          self.lbl_disp_plus.SetForegroundColour('WHITE')
+          self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+          self.lbl_disp_plus.SetFont(self.font)          
+
           self.dispositivo_m = wx.TextCtrl(self, pos = (672, 28), size = (180,195), style = wx.TE_MULTILINE|wx.TE_READONLY|wx.TE_AUTO_URL)          
-
+          self.dispositivo_minus = wx.Button(self, -1, '<-', pos = (615, 60), size = (50, 25))
 
           
 

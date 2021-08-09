@@ -38,7 +38,7 @@ class Paciente(wx.Panel):	#classe herdada da classe "Panel"
 	"""
     def onMouseLeftClicked(self, event):
         print("Left button of the mouse was clicked\n", self.leito)
-        self.cadastro = cadastro.Cadastro(1, 1, '#3C4043')
+        self.cadastro = cadastro.Cadastro(self.leito, 1, 1, '#3C4043')
 
 
 
