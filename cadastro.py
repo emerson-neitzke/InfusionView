@@ -5,6 +5,7 @@
 
 import wx
 import password
+import dbase
 
 """Classe Cadastro
 """
@@ -18,7 +19,10 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.mypanel = wx.Panel(self, -1)
 
+          self.leito = idef  
           self.dispositivos = ['TCH18023190', 'TCH18023191', 'TCH18023192', 'TCH18023193', 'TCH18023194', 'TCH18023195', 'TCH18023187', 'TCH18023188']
+          self.db_table = [{'leito':'-1', 'nome':'-1', 'prontuario':'-1', 'data_entrada':'-1', 'cpf':'-1', 'telefone':'-1', 'genero':'-1', 'data_de_nascimento':'-1', 'medico':'-1'}]
+
 
           #Nome  
           self.lbl_nome = wx.StaticText(self, -1, "Nome  ", (10, 12))
@@ -122,8 +126,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
 	def CadastrarOnClicked(self, event):
           print("click button cadastrar")
-          #self.txt_disp_disp.AppendText("TCH1921681105\n")
-          #self.lst_disp_disp.Append("TCH1921681105")
+          #dbase.db.insert({'leito': self.leito, 'nome': self.txt_nome.GetLineText(0), 'prontuario':self.txt_prontuario.GetLineText(0)})
+          dbase.db.insert({'leito':'-1', 'nome':'-1', 'prontuario':'-1', 'data_entrada':'-1', 'cpf':'-1', 'telefone':'-1', 'genero':'-1', 'data_de_nascimento':'-1', 'medico':'-1'})
 
 	def EditarOnClicked(self, event):
           print("click button Editar")

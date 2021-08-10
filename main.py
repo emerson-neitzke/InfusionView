@@ -3,6 +3,7 @@
 """Modulo main
 
 """
+
 import wx
 import modulos
 import tcp_server
@@ -12,6 +13,7 @@ import paciente
 import dispositivo
 import cadastro
 import password
+import dbase
 
 def main():
 	print "Inicializando modulo principal..."
