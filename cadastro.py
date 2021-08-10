@@ -20,7 +20,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.mypanel = wx.Panel(self, -1)
 
 
-          self.leito = idef  
+          self.leito = idef
           self.dispositivos = ['TCH18023190', 'TCH18023191', 'TCH18023192', 'TCH18023193', 'TCH18023194', 'TCH18023195', 'TCH18023187', 'TCH18023188']
 
           """Nome
@@ -147,7 +147,11 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             dbase.db.update({'telefone': self.txt_telefone.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
             dbase.db.update({'genero': self.txt_genero.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
             dbase.db.update({'data_de_nascimento': self.txt_birth_day.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
-            dbase.db.update({'medico': self.txt_medico.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))                                    
+            dbase.db.update({'medico': self.txt_medico.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
+
+            self.child_paciente = paciente.Paciente(self, id, (1,1), (88,131), '#3C4043')
+
+            
 
 	def EditarOnClicked(self, event):
           print("click button Editar")
