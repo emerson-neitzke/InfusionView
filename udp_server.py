@@ -4,9 +4,8 @@
 
 """
 
-import socket, ssl, pprint
 
-UDP_PORT = 4434
+
 
 
 
