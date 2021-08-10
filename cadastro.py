@@ -19,12 +19,12 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.mypanel = wx.Panel(self, -1)
 
+
           self.leito = idef  
           self.dispositivos = ['TCH18023190', 'TCH18023191', 'TCH18023192', 'TCH18023193', 'TCH18023194', 'TCH18023195', 'TCH18023187', 'TCH18023188']
-          self.db_table = [{'leito':'-1', 'nome':'-1', 'prontuario':'-1', 'data_entrada':'-1', 'cpf':'-1', 'telefone':'-1', 'genero':'-1', 'data_de_nascimento':'-1', 'medico':'-1'}]
 
-
-          #Nome  
+          """Nome
+          """
           self.lbl_nome = wx.StaticText(self, -1, "Nome  ", (10, 12))
           self.lbl_nome.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -32,7 +32,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.txt_nome = wx.TextCtrl(self, pos = (10, 28), size = (405,25))
 
-          #Prontuario
+          """Prontuario
+          """
           self.lbl_prontuario = wx.StaticText(self, -1, "Prontuario  ", (10, 55))
           self.lbl_prontuario.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -40,7 +41,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           
           self.txt_prontuario = wx.TextCtrl(self, pos = (10, 70), size = (200,25))          
           
-          #Data entrada
+          """Data entrada
+          """
           self.lbl_data_entrada = wx.StaticText(self, -1, "Data Entrada ", (215, 55))
           self.lbl_data_entrada.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -48,7 +50,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.txt_data_entrada = wx.TextCtrl(self, pos = (215, 70), size = (200,25))
 
-          #CPF
+          """CPF
+          """
           self.lbl_cpf = wx.StaticText(self, -1, "CPF ", (10, 98))
           self.lbl_cpf.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -56,7 +59,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.txt_cpf = wx.TextCtrl(self, pos = (10, 115), size = (200,25))
 
-          #Telefone
+          """Telefone
+          """
           self.lbl_telefone = wx.StaticText(self, -1, "Telefone ", (215, 98))
           self.lbl_telefone.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -64,7 +68,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.txt_telefone = wx.TextCtrl(self, pos = (215, 115), size = (200,25))
 
-          #Genero
+          """Genero
+          """
           self.lbl_genero = wx.StaticText(self, -1, "Genero ", (10, 141))
           self.lbl_genero.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -72,7 +77,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.txt_genero = wx.TextCtrl(self, pos = (10, 155), size = (200,25))
 
-          #Data Nascimento
+          """Data Nascimento
+          """
           self.lbl_birth_day = wx.StaticText(self, -1, "Data Nascimento ", (215, 141))
           self.lbl_birth_day.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -80,7 +86,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.txt_birth_day = wx.TextCtrl(self, pos = (215, 155), size = (200,25))
 
-          #Medico responsavel
+          """Medico responsavel
+          """
           self.lbl_medico = wx.StaticText(self, -1, "Medico responsavel ", (10, 184))
           self.lbl_medico.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -88,32 +95,36 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.txt_medico = wx.TextCtrl(self, pos = (10, 200), size = (400,25))
 
-          #buttons
+          """buttons
+          """
           self.btn_cadastrar = wx.Button(self, -1, 'Cadastrar(+)', pos = (10, 235), size = (130, 25))
           self.btn_editar = wx.Button(self, -1, 'Editar', pos = (145, 235), size = (130, 25))          
           self.btn_alta = wx.Button(self, -1, 'Dar Alta(-)', pos = (280, 235), size = (130, 25))
-          
-          #
+          #self.btn_cadastrar.Disable()
+          #self.btn_editar.Disable()
+          #self.btn_alta.Disable()
+
+          """
+          """
           self.lbl_disp_plus = wx.StaticText(self, -1, "Dispositivos Disponiveis  ", (428, 12))
           self.lbl_disp_plus.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
           self.lbl_disp_plus.SetFont(self.font)          
 
           self.lst_disp_disp = wx.ListBox(self, choices = self.dispositivos, pos = (428, 28), size = (180,195), style = wx.LB_SINGLE)
-          #self.txt_disp_disp = wx.TextCtrl(self, pos = (428, 28), size = (180,195), style = wx.TE_MULTILINE|wx.TE_READONLY|wx.TE_AUTO_URL)          
+
           self.btn_disp_right = wx.Button(self, -1, '->', pos = (615, 28), size = (50, 25))
 
-          #  
           self.lbl_disp_plus = wx.StaticText(self, -1, "Dispositivos Alocados  ", (672, 12))
           self.lbl_disp_plus.SetForegroundColour('WHITE')
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
           self.lbl_disp_plus.SetFont(self.font)
 
-          #self.txt_dispositivo_alloc = wx.TextCtrl(self, pos = (672, 28), size = (180,195), style = wx.TE_MULTILINE|wx.TE_READONLY|wx.TE_AUTO_URL)
           self.lst_disp_aloc = wx.ListBox(self, pos = (672, 28), size = (180,195), style = wx.LB_SINGLE)
           self.btn_disp_left = wx.Button(self, -1, '<-', pos = (615, 60), size = (50, 25))
 
-          #events
+          """Events
+          """
           self.btn_cadastrar.Bind(wx.EVT_BUTTON, self.CadastrarOnClicked)
           self.btn_editar.Bind(wx.EVT_BUTTON, self.EditarOnClicked)
           self.btn_alta.Bind(wx.EVT_BUTTON, self.AltaOnClicked)
@@ -124,10 +135,19 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lst_disp_disp.Bind(wx.EVT_LISTBOX, self.OnDispDispRowSelected, self.lst_disp_disp)
           self.lst_disp_aloc.Bind(wx.EVT_LISTBOX, self.OnDispAlocRowSelected, self.lst_disp_aloc)
 
+	"""metodos
+	"""
 	def CadastrarOnClicked(self, event):
           print("click button cadastrar")
-          #dbase.db.insert({'leito': self.leito, 'nome': self.txt_nome.GetLineText(0), 'prontuario':self.txt_prontuario.GetLineText(0)})
-          dbase.db.insert({'leito':'-1', 'nome':'-1', 'prontuario':'-1', 'data_entrada':'-1', 'cpf':'-1', 'telefone':'-1', 'genero':'-1', 'data_de_nascimento':'-1', 'medico':'-1'})
+          if Cadastro.isDataValid(self) == True:
+            dbase.db.update({'nome': self.txt_nome.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'prontuario': self.txt_prontuario.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'data_entrada': self.txt_data_entrada.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'cpf': self.txt_cpf.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'telefone': self.txt_telefone.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'genero': self.txt_genero.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'data_de_nascimento': self.txt_birth_day.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'medico': self.txt_medico.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))                                    
 
 	def EditarOnClicked(self, event):
           print("click button Editar")
@@ -149,7 +169,6 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lst_disp_aloc.Delete(self.item)
           print("click button Right", str(self.item))
 
-
 	def OnDispDispRowSelected(self, event):
           #print("Row selected ", self.lst_disp_disp.GetSelection)
           print("Current selection: ", self.lst_disp_disp.GetStringSelection()+"\n")
@@ -157,6 +176,19 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 	def OnDispAlocRowSelected(self, event):
           print("Disp Alocados Row selected")          
 
+	def isDataValid(self):
+          if self.txt_nome.GetLineLength(0) > 0 and \
+            self.txt_prontuario.GetLineLength(0) and \
+            self.txt_data_entrada.GetLineLength(0) > 0 and \
+            self.txt_cpf.GetLineLength(0) > 0 and \
+            self.txt_telefone.GetLineLength(0) > 0 and \
+            self.txt_genero.GetLineLength(0) > 0 and \
+            self.txt_birth_day.GetLineLength(0) > 0 and \
+            self.txt_medico.GetLineLength(0) > 0:
+            return True
+          else:
+            return False
+            
 
 # Codigo de inicializacao
 print "Inicializando modulo cadastro..."

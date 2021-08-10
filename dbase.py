@@ -9,6 +9,7 @@ from tinydb import TinyDB, Query
 """
 
 db = TinyDB('db.json')
+dbLeitos = Query()
 
 if len(db) == 0:
     """ Leito 1
@@ -25,7 +26,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 2
     """               
     db.insert({'leito':'2', 
@@ -40,7 +43,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 3
     """               
     db.insert({'leito':'3', 
@@ -55,7 +60,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 4
     """
     db.insert({'leito':'4', 
@@ -70,7 +77,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 5
     """               
     db.insert({'leito':'5', 
@@ -85,7 +94,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 6
     """               
     db.insert({'leito':'6', 
@@ -100,7 +111,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})   
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 7
     """
     db.insert({'leito':'7', 
@@ -115,7 +128,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 8
     """               
     db.insert({'leito':'8', 
@@ -130,7 +145,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 9
     """               
     db.insert({'leito':'9', 
@@ -145,7 +162,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 10
     """
     db.insert({'leito':'10', 
@@ -160,7 +179,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 11
     """               
     db.insert({'leito':'11', 
@@ -175,7 +196,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 12
     """               
     db.insert({'leito':'12', 
@@ -190,7 +213,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})                   
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 13
     """               
     db.insert({'leito':'13', 
@@ -205,7 +230,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 14
     """
     db.insert({'leito':'14', 
@@ -220,7 +247,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 15
     """               
     db.insert({'leito':'15', 
@@ -235,7 +264,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
     """ Leito 16
     """               
     db.insert({'leito':'16', 
@@ -250,7 +281,9 @@ if len(db) == 0:
                'dispositiv_2':'-1',
                'dispositiv_3':'-1',
                'dispositiv_4':'-1',
-               'medico':'-1'})                
+               'tipo_sanguineo':'-1',
+               'medico':'-1',
+               'flag':'false'})
 else:
     print db.all()
 

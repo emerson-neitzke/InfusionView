@@ -25,10 +25,19 @@ class Paciente(wx.Panel):	#classe herdada da classe "Panel"
 	self.nome = ''
 	self.prontuario = 0
 	self.data_entrada = ''
-	self.data_saida = ''
+	self.cpf = 0
+	self.telefone = 0
 	self.idade = 0
 	self.genero = ''
+	self.data_nascimento = ''
 	self.tipo_sanguineo = ''
+	self.medico = ''
+	self.dispositivos = {
+	    "dp1":"0",
+        "dp2":"0",
+        "dp3":"0",
+        "dp4":"0",
+    }
 
 	self.id = wx.StaticText(self, -1, "%02d" % id, (33, 16))
 	self.id.SetForegroundColour('WHITE')
@@ -40,7 +49,7 @@ class Paciente(wx.Panel):	#classe herdada da classe "Panel"
     def onMouseLeftClicked(self, event):
         print("Left button of the mouse was clicked\n", self.leito)
         self.cadastro = cadastro.Cadastro(self.leito, 1, 1, '#3C4043')
-        #self.passw = password.Password(-1, 1, 1, '#3C4043')
+
 
 
 # Codigo de inicializacao
