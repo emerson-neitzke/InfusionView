@@ -269,7 +269,7 @@ if len(db) == 0:
                'medico':'-1',
                'flag':'false'})
     """ Leito 16
-    """               
+    """
     db.insert({'leito':'16', 
                'nome':'-1', 
                'prontuario':'-1', 
@@ -287,6 +287,16 @@ if len(db) == 0:
                'flag':'false'})
 else:
     print db.all()
+
+"""metodos
+"""
+
+def dbParse(results, field):
+    result = [r[field] for r in results]
+    for field in result:
+        return field
+
+
 
 
 # Codigo de inicializacao

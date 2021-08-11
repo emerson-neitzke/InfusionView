@@ -62,7 +62,7 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
         print self.leito1.teste
         print self.leito1.child_paciente.leito
 
-        self.leito1.child_paciente.lbl_nome.SetLabel("Fulano")
+        #self.leito1.child_paciente.lbl_nome.SetLabel("Fulano")
         
         self.leito2 = leito.Leito(self, 2, (1,135), (960,135), '#232728')
         
@@ -90,12 +90,18 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
         """ Update Leitos from database
         """
         results = dbase.db.search(dbase.dbLeitos.leito == '1')
+        self.flag = dbase.dbParse(results, 'flag')
+        self.nome = dbase.dbParse(results, 'nome')
+        self.prontuario = dbase.dbParse(results, 'prontuario')
 
-        result = [r['flag'] for r in results]
-        for flag in result:
-            self.bool = flag
-            print flag
-            print self.bool   
+        if self.flag == 'true':
+            self.leito1.child_paciente.lbl_nome.SetLabel(self.nome)
+            self.leito1.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
+            
+        print self.flag
+        print self.prontuario
+        print self.nome
+
 
 
 if __name__ == "__main__":
