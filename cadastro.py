@@ -148,8 +148,9 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             dbase.db.update({'genero': self.txt_genero.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
             dbase.db.update({'data_de_nascimento': self.txt_birth_day.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
             dbase.db.update({'medico': self.txt_medico.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'flag': 'true'}, dbase.dbLeitos.leito == str(self.leito))            
 
-            self.child_paciente = paciente.Paciente(self, id, (1,1), (88,131), '#3C4043')
+            #self.child_paciente = paciente.Paciente(self, id, (1,1), (88,131), '#3C4043')
 
             
 

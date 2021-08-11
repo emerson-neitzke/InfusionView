@@ -3,7 +3,7 @@
 """Modulo main
 
 """
-
+from tinydb import where
 import wx
 import struct
 import modulos
@@ -49,12 +49,16 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
         self.panel = MyPanel(self)
 
+        self.bool = 0
+
         self.broadcom = udp_server.Udp(ip_addr, UDP_PORT, tcp_port)
-        
+
         print self.broadcom.test
 
+        """ Instantiate Leitos
+        """
         self.leito1 = leito.Leito(self, 1, (1,1), (960,135), '#232728')
-        
+
         print self.leito1.teste
         print self.leito1.child_paciente.leito
 
@@ -62,9 +66,9 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
         
         self.leito2 = leito.Leito(self, 2, (1,135), (960,135), '#232728')
         
-        print self.leito2.child_paciente.leito        
-        
-        
+        print self.leito2.child_paciente.leito
+
+
         self.leito3 = leito.Leito(self, 3, (1,2*135), (960,135), '#232728')
         self.leito4 = leito.Leito(self, 4, (1,3*135), (960,135), '#232728')
         self.leito5 = leito.Leito(self, 5, (1,4*135), (960,135), '#232728')
@@ -82,6 +86,16 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
         #self.child_canal_11 = dispositivo.Canal(self, -1, (94, 3), (280, 131), '#2A6DF7')
         #self.child_canal_12 = dispositivo.Canal(self, -1, (94+280+1, 3), (280, 131), '#2A6DF7')
+
+        """ Update Leitos from database
+        """
+        results = dbase.db.search(dbase.dbLeitos.leito == '1')
+
+        result = [r['flag'] for r in results]
+        for flag in result:
+            self.bool = flag
+            print flag
+            print self.bool   
 
 
 if __name__ == "__main__":

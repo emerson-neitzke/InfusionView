@@ -4,6 +4,7 @@
 """
 
 from tinydb import TinyDB, Query
+from tinydb import where
 
 """Classe Dbase
 """
