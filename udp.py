@@ -53,7 +53,7 @@ class Udp(wx.Panel):
         msg[14:15] = struct.pack('>H', self.tcp_port)
 
         try:
-            #self.sock_udp.sendto(msg, ('<broadcast>', UDP_PORT))
+            self.sock_udp.sendto(msg, ('<broadcast>', self.udp_port))
             print msg
         except:
             print "Socekt Error...broadcast"

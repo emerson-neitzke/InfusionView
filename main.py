@@ -20,7 +20,7 @@ import tcp
 
 UDP_PORT = 4434
 TCP_PORT = 4082
-ip_addr = "127.0.0.1"
+ip_addr = "192.168.43.138"
 
 
 def main():
@@ -57,8 +57,8 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
         """ Instantiate TCP server
         """
         self.tcp = tcp.Tcp(11, TCP_PORT)
-        self.tcp = tcp.Tcp(12, TCP_PORT+1)
-        self.tcp = tcp.Tcp(13, TCP_PORT+2)
+        #self.tcp = tcp.Tcp(12, TCP_PORT+1)
+        #self.tcp = tcp.Tcp(13, TCP_PORT+2)
 
 
         """ Instantiate Leitos
