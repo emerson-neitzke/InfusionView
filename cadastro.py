@@ -32,6 +32,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lbl_nome.SetFont(self.font)          
 
           self.txt_nome = wx.TextCtrl(self, pos = (10, 28), size = (405,25))
+          self.txt_nome.Disable()
 
           """Prontuario
           """
@@ -40,7 +41,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
           self.lbl_prontuario.SetFont(self.font)
           
-          self.txt_prontuario = wx.TextCtrl(self, pos = (10, 70), size = (200,25))          
+          self.txt_prontuario = wx.TextCtrl(self, pos = (10, 70), size = (200,25))
+          self.txt_prontuario.Disable()
           
           """Data entrada
           """
@@ -50,6 +52,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lbl_data_entrada.SetFont(self.font)
 
           self.txt_data_entrada = wx.TextCtrl(self, pos = (215, 70), size = (200,25))
+          self.txt_data_entrada.Disable()
 
           """CPF
           """
@@ -59,6 +62,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lbl_cpf.SetFont(self.font)
 
           self.txt_cpf = wx.TextCtrl(self, pos = (10, 115), size = (200,25))
+          self.txt_cpf.Disable()
 
           """Telefone
           """
@@ -68,6 +72,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lbl_telefone.SetFont(self.font)
 
           self.txt_telefone = wx.TextCtrl(self, pos = (215, 115), size = (200,25))
+          self.txt_telefone.Disable()
 
           """Genero
           """
@@ -77,6 +82,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lbl_genero.SetFont(self.font)
 
           self.txt_genero = wx.TextCtrl(self, pos = (10, 155), size = (200,25))
+          self.txt_genero.Disable()
 
           """Data Nascimento
           """
@@ -86,6 +92,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lbl_birth_day.SetFont(self.font)
 
           self.txt_birth_day = wx.TextCtrl(self, pos = (215, 155), size = (200,25))
+          self.txt_birth_day.Disable()
 
           """Medico responsavel
           """
@@ -95,6 +102,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.lbl_medico.SetFont(self.font)
 
           self.txt_medico = wx.TextCtrl(self, pos = (10, 200), size = (400,25))
+          self.txt_medico.Disable()
 
           """buttons
           """
@@ -123,6 +131,50 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
           self.lst_disp_aloc = wx.ListBox(self, pos = (672, 28), size = (180,195), style = wx.LB_SINGLE)
           self.btn_disp_left = wx.Button(self, -1, '<-', pos = (615, 60), size = (50, 25))
+
+          """ Update Leito from database
+          """
+
+          results = dbase.db.search(dbase.dbLeitos.leito == str(self.leito))
+          self.flag = dbase.dbParse(results, 'flag')
+          if self.flag == 'true':
+            self.nome = dbase.dbParse(results, 'nome')
+            self.prontuario = dbase.dbParse(results, 'prontuario')
+            self.data_entrada = dbase.dbParse(results, 'data_entrada')
+            self.cpf = dbase.dbParse(results, 'cpf')
+            self.telefone = dbase.dbParse(results, 'telefone')
+            self.genero = dbase.dbParse(results, 'genero')
+            self.data_de_nascimento = dbase.dbParse(results, 'data_de_nascimento')
+            self.tipo_sanguineo = dbase.dbParse(results, 'tipo_sanguineo')
+            self.medico = dbase.dbParse(results, 'medico')
+            self.dsp1 = dbase.dbParse(results, 'dispositiv_1')
+            self.dsp2 = dbase.dbParse(results, 'dispositiv_2')
+            self.dsp3 = dbase.dbParse(results, 'dispositiv_3')
+            self.dsp4 = dbase.dbParse(results, 'dispositiv_4')
+
+            self.txt_nome.SetValue(self.nome)
+            self.txt_prontuario.SetValue(self.prontuario)
+            self.txt_data_entrada.SetValue(self.data_entrada)
+            self.txt_cpf.SetValue(self.cpf)
+            self.txt_telefone.SetValue(self.telefone)
+            self.txt_genero.SetValue(self.genero)
+            self.txt_birth_day.SetValue(self.data_de_nascimento)
+            self.txt_medico.SetValue(self.medico)
+            
+            self.lst_disp_aloc.Append(self.dsp1)
+            self.lst_disp_aloc.Append(self.dsp2)
+            self.lst_disp_aloc.Append(self.dsp3)
+            self.lst_disp_aloc.Append(self.dsp4)
+          else:
+            self.txt_nome.Enable()
+            self.txt_prontuario.Enable()
+            self.txt_data_entrada.Enable()
+            self.txt_cpf.Enable()
+            self.txt_telefone.Enable()
+            self.txt_genero.Enable()
+            self.txt_birth_day.Enable()
+            self.txt_medico.Enable()
+            
 
           """Events
           """
@@ -372,7 +424,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
 	def EditarOnClicked(self, event):
           print("click button Editar")
-          self.passw = password.Password(-1, 960, 540, '#3C4043')
+          #self.passw = password.Password(-1, 960, 540, '#3C4043')
+          self.txt_nome.Enable(True)
 
 	def AltaOnClicked(self, event):
           print("click button alta", self.txt_disp_disp.GetLineText(1))
