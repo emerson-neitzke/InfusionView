@@ -8,6 +8,8 @@ from datetime import datetime
 import wx
 import socket, ssl, pprint
 import re
+import binascii
+import struct
 import threading
 import sys, time
 
@@ -26,7 +28,7 @@ stat_equipament1 = "Equipamento Desconectado"
 stat_equipament2 = "Equipamento Desconectado"
 unidade1 = ""
 unidade2 = ""
-local_host = "127.0.0.1"
+host_ip = "127.0.0.1"
 power = ""
 infusion_mod = ""
 tipo_de_paciente = "Adulto"
@@ -94,11 +96,11 @@ class Tcp(wx.Panel):
             self.watchdog_timeout = 0
 
             print "Client connected,", fromaddr
-            ip_addr = ""
+            host_ip = ""
             temp = ""
-            ip_addr = str(fromaddr)
-            ip_addr = re.sub(r'[(|)|,]',r'', ip_addr)
-            ip_addr = re.sub(r'[\']',r'', ip_addr)
+            host_ip = str(fromaddr)
+            host_ip = re.sub(r'[(|)|,]',r'', host_ip)
+            host_ip = re.sub(r'[\']',r'', host_ip)
 
             self.id += 1
 
@@ -119,13 +121,13 @@ class Tcp(wx.Panel):
                 print "cypher: ", self.cyph
                 print "cert: ", self.cert
 
-                self.th_client = threading.Thread(target=self.thread_client,args=("thread client " + ip_addr + " sendo executada:",connstream, self.id, 0))
+                self.th_client = threading.Thread(target=self.thread_client,args=("thread client " + host_ip + " sendo executada:",connstream, self.id, 0))
                 self.th_client.start()
 
                 self.threadClientConnected = True
 
                 #print "\n"
-                #print "Client " + str(sys.argv[1]) + " Connected...", ip_addr
+                #print "Client " + str(sys.argv[1]) + " Connected...", host_ip
                 #print "\n"
 
                 #time.sleep(1)
@@ -140,7 +142,7 @@ class Tcp(wx.Panel):
                 while self.threadClientConnected:
                     time.sleep(1)
 
-                #print "Client " + str(sys.argv[1]) + " disconnected...", ip_addr
+                #print "Client " + str(sys.argv[1]) + " disconnected...", host_ip
             else:
                 self.error = False
                 time.sleep(1)
@@ -206,8 +208,160 @@ class Tcp(wx.Panel):
                        conn.write(chr(0x0C))  #PONG
                    elif self.data == chr(0x06):
                        print "Cliente desconectado pelo usuario"
-                       self.threadClientConnected = False               
+                       self.threadClientConnected = False
 
+               elif len(self.data) > 1 and self.data[2] == chr(0x00) or self.data[2] == chr(0x02):
+                   if self.data[2] == chr(0x00):
+                      self.envia_ack(conn, self.data)
+                      self.str_serial = ""
+                      for i in range(14):
+                          self.str_serial += self.data[18 + i]
+
+                      #self.SetTitle(self.str_serial)
+
+                   p = int(ord(self.data[6]) * 256) + int(ord(self.data[5]))
+
+                   for x in range(len(self.data)):
+                      c = "%02X" % ord(self.data[x])
+                      self.s += c
+
+                   #print self.str_serial
+                   #print self.s
+                   
+                   if self.data[2] == chr(0x02):
+                      self.tsec = (int(ord(self.data[190])) * 16777216) + (int(ord(self.data[189])) * 65536) + (int(ord(self.data[188])) * 256) + int(ord(self.data[187]))
+                      self.sec_total = self.tsec
+
+                      self.thor = self.tsec / 3600
+                      self.tsec = self.tsec % 3600
+                      self.tmin = self.tsec / 60
+                      self.tsec = self.tsec % 60
+
+                      self.thor = format(self.thor, '02d')
+                      self.tmin = format(self.tmin, '02d')
+                      self.tsec = format(self.tsec, '02d')
+
+                      print self.thor
+                      print self.tmin
+                      print self.tsec                                            
+
+                      self.time = str(self.thor) + ":" + str(self.tmin) + ":" + str(self.tsec)
+
+                      self.temp_fluxo = ""
+                      self.temp_fluxo = (int(ord(self.data[115])) * 16777216) + (int(ord(self.data[114])) * 65536) + (int(ord(self.data[113])) * 256) + int(ord(self.data[112]))
+                   
+                      """Parse medicamento
+                      """
+
+                      self.str_temp = ""
+                      for x in range(7):
+                          self.str_temp += self.data[x + 37]
+
+                      if self.data[31] == chr(0x01):
+                          recv = self.time
+                          medicine1 = re.sub('([^\s\w]|_)+', '', self.str_temp)
+                          x = str(struct.unpack('f',struct.pack('i',self.temp_fluxo)))
+                          fluxo1 = re.sub(r'[(|)|,]',r'', x)
+                          fluxo1 = round(float(fluxo1), 2)
+                          if self.data[34] == chr(60):
+                              pan1_color = "yellow"
+                          else:
+                              pan1_color = ""
+
+                          if self.data[33] == chr(0):
+                              unidade1 = "ml/h"
+                          else:
+                              unidade1 = ""
+
+                      elif self.data[31] == chr(0x02):
+                          recv2 = self.time
+                          medicine2 = re.sub('([^\s\w]|_)+', '', self.str_temp)
+                          x = str(struct.unpack('f',struct.pack('i',self.temp_fluxo)))
+                          fluxo2 = re.sub(r'[(|)|,]',r'', x)
+                          fluxo2 = round(float(fluxo2), 2)
+                          if self.data[34] == chr(60):
+                              pan2_color = "yellow"
+                          else:
+                              pan2_color = ""
+
+                          if self.data[33] == chr(0):
+                              unidade2 = "ml/h"
+                          else:
+                              unidade2 = ""
+
+                      #print "Tipo de paciente:", int(self.data[32])
+
+                      #if self.data[32] == chr(0):
+                      #    tipo_de_paciente = "Neonatal"
+                      #elif self.data[32] == chr(1):
+                      #    tipo_de_paciente = "Adulto"
+                      #elif self.data[32] == chr(2):       
+                      #    tipo_de_paciente = "Pediatrico"
+
+                      print "/n"  
+                      print "packet:", p, "canal :", ord(self.data[31]),", message :", ord(self.data[2]), ",IP:", host_ip, "=>", self.s
+                      self.s = ""
+
+               elif len(self.data) > 1 and self.data[2] == chr(0x01):
+                   self.envia_ack(conn, self.data)
+
+                   p = int(ord(self.data[6]) * 256) + int(ord(self.data[5]))
+
+                   for x in range(len(self.data)):
+                      c = "%02X" % ord(self.data[x])
+                      self.s += c
+
+                   if (int(ord(self.data[72])) & int(0x02)) == int(0x02):
+                      power = "AC"    
+                   else:
+                      power = ""
+
+                   if int(ord(self.data[52])) == 0:
+                      infusion_mod = "VOL"
+                   elif int(ord(self.data[52])) == 1:
+                      infusion_mod = "DOSE"
+                   elif int(ord(self.data[52])) == 2:
+                      infusion_mod = "DERS"
+                      
+                   print "\n"
+                   print "packet :", p, ", message :", ord(self.data[2]), ",IP:", host_ip, "=>", self.s
+                   self.s = ""
+
+               elif len(self.data) > 1 and self.data[2] == chr(0x03):
+                   self.envia_ack(conn, self.data)
+
+                   p = int(ord(self.data[6]) * 256) + int(ord(self.data[5]))
+
+                   for x in range(len(self.data)):
+                      c = "%02X" % ord(self.data[x])
+                      self.s += c
+
+                   self.reg = int(ord(self.data[33]) * 256) + int(ord(self.data[32]))
+                   self.cod = int(ord(self.data[41]))
+                   self.datalog = str(self.reg) + ":" + str(self.cod)
+
+                   if self.data[17] == chr(0x01):
+                       if self.cod == 34:
+                          pan1_color = "red"
+                       elif self.cod == 9:
+                          pan1_color = ""
+
+                       datalog_canal1 = self.datalog
+
+                   elif self.data[17] == chr(0x02):
+                       if self.cod == 34:
+                          pan2_color = "red"
+                       elif self.cod == 9:
+                          pan2_color = ""
+
+                       datalog_canal2 = self.datalog
+
+                   print "\n"
+                   print "packet :", p, ", datalogger :", "canal :", ord(self.data[17]),", reg:", self.reg, ",IP:", host_ip, "=>", self.s
+                   self.s = ""
+
+                      
+                      
 
 
     def envia_auth_required(self, connstream):
