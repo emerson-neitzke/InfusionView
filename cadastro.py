@@ -109,9 +109,9 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.btn_cadastrar = wx.Button(self, -1, 'Cadastrar(+)', pos = (10, 235), size = (130, 25))
           self.btn_editar = wx.Button(self, -1, 'Editar', pos = (145, 235), size = (130, 25))          
           self.btn_alta = wx.Button(self, -1, 'Dar Alta(-)', pos = (280, 235), size = (130, 25))
-          #self.btn_cadastrar.Disable()
-          #self.btn_editar.Disable()
-          #self.btn_alta.Disable()
+          self.btn_cadastrar.Disable()
+          self.btn_editar.Disable()
+          self.btn_alta.Disable()
 
           """
           """
@@ -161,10 +161,18 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.txt_birth_day.SetValue(self.data_de_nascimento)
             self.txt_medico.SetValue(self.medico)
             
-            self.lst_disp_aloc.Append(self.dsp1)
-            self.lst_disp_aloc.Append(self.dsp2)
-            self.lst_disp_aloc.Append(self.dsp3)
-            self.lst_disp_aloc.Append(self.dsp4)
+            if self.dsp1 != '-1':
+                self.lst_disp_aloc.Append(self.dsp1)
+            if self.dsp2 != '-1':
+                self.lst_disp_aloc.Append(self.dsp2)
+            if self.dsp3 != '-1':
+                self.lst_disp_aloc.Append(self.dsp3)
+            if self.dsp4 != '-1':
+                self.lst_disp_aloc.Append(self.dsp4)
+
+            self.btn_editar.Enable()
+            self.btn_alta.Enable()
+            
           else:
             self.txt_nome.Enable()
             self.txt_prontuario.Enable()
@@ -174,6 +182,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.txt_genero.Enable()
             self.txt_birth_day.Enable()
             self.txt_medico.Enable()
+            self.btn_cadastrar.Enable()
             
 
           """Events
@@ -204,6 +213,17 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             dbase.db.update({'data_de_nascimento': self.txt_birth_day.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
             dbase.db.update({'medico': self.txt_medico.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
             dbase.db.update({'flag': 'true'}, dbase.dbLeitos.leito == str(self.leito))
+
+            self.btn_cadastrar.Disable()
+            
+            self.txt_nome.Disable()
+            self.txt_prontuario.Disable()
+            self.txt_data_entrada.Disable()
+            self.txt_cpf.Disable()
+            self.txt_telefone.Disable()
+            self.txt_genero.Disable()
+            self.txt_birth_day.Disable()
+            self.txt_medico.Disable()
 
             """Update dispositivos alocados
             """
@@ -425,7 +445,16 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 	def EditarOnClicked(self, event):
           print("click button Editar")
           #self.passw = password.Password(-1, 960, 540, '#3C4043')
-          self.txt_nome.Enable(True)
+          self.txt_nome.Enable()
+          self.txt_prontuario.Enable()
+          self.txt_data_entrada.Enable()
+          self.txt_cpf.Enable()
+          self.txt_telefone.Enable()
+          self.txt_genero.Enable()
+          self.txt_birth_day.Enable()
+          self.txt_medico.Enable()
+          self.btn_cadastrar.Enable()
+          
 
 	def AltaOnClicked(self, event):
           print("click button alta", self.txt_disp_disp.GetLineText(1))
