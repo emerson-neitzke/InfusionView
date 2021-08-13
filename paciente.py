@@ -10,7 +10,7 @@ import password
 """Classe Paciente
 """
 class Paciente(wx.Panel):   #classe herdada da classe "Panel"
-    def __init__(self, parent, id, posxy, sizexy, color): #parametrized constructor
+    def __init__(self, parent, parent2, id, posxy, sizexy, color): #parametrized constructor
         self.paciente = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_NONE)
         self.SetBackgroundColour(color)
         self.Bind(wx.EVT_LEFT_UP, self.onMouseLeftClicked)
@@ -21,6 +21,8 @@ class Paciente(wx.Panel):   #classe herdada da classe "Panel"
 
         """instance variable unique to each instance
         """
+        self.parent = parent2
+
         self.leito = id
         self.nome = ''
         self.prontuario = 0
@@ -58,7 +60,7 @@ class Paciente(wx.Panel):   #classe herdada da classe "Panel"
     """
     def onMouseLeftClicked(self, event):
         print("Left button of the mouse was clicked\n", self.leito)
-        self.cadastro = cadastro.Cadastro(self.leito, 1, 1, '#3C4043')
+        self.cadastro = cadastro.Cadastro(self.parent, self.leito, 1, 1, '#3C4043')
 
 
 

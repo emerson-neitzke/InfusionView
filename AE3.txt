@@ -1,2 +1,0 @@
-O GitHub é uma plataforma WEB que permite gerenciar uma cópia local de um repositório GIT, permitindo assim efetuar o controle de versão de arquivos fonte. Ele permite a colaboração de vários programadores em um projeto open source em que cada um tem a sua propria versão dos arquivos, permitindo assim a alteração dos mesmos sem afetar os outros
-trabalhos em desenvolvimento.

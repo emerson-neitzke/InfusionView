@@ -297,7 +297,5 @@ def dbParse(results, field):
         return field
 
 
-
-
 # Codigo de inicializacao
 print "Inicializando modulo dbase..."
