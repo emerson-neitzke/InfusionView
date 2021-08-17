@@ -332,7 +332,8 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito16.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito16.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-
+    def updLeito(self, serial, pos, color):
+        self.child_canal_1 = dispositivo.Canal(self, -1, self.dsp1, (94, 3), (280, 131), color)
 
 
 if __name__ == "__main__":

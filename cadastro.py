@@ -6,6 +6,7 @@
 import wx
 import password
 import dbase
+import dispositivo
 
 """Classe Cadastro
 """
@@ -201,7 +202,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 	"""
 	def CadastrarOnClicked(self, event):
           print("click button cadastrar")
-          #self.parent.leito2.child_paciente.lbl_id.SetLabel("Publisher")
+          self.parent.leito1.child_paciente.nome = "Publisher"
 
           if Cadastro.isDataValid(self) == True:
             dbase.db.update({'nome': self.txt_nome.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
@@ -240,14 +241,32 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito1.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
                 self.parent.leito1.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
 
-                self.parent.leito1.child_paciente.nome(self.txt_nome.GetLineText(0))
-                self.parent.leito1.child_paciente.prontuario(self.txt_prontuario.GetLineText(0))
-                self.parent.leito1.child_paciente.data_entrada(self.txt_data_entrada.GetLineText(0))
-                self.parent.leito1.child_paciente.cpf(self.txt_cpf.GetLineText(0))
-                self.parent.leito1.child_paciente.telefone(self.txt_telefone.GetLineText(0))
-                self.parent.leito1.child_paciente.genero(self.txt_genero.GetLineText(0))
-                self.parent.leito1.child_paciente.data_nascimento(self.txt_birth_day.GetLineText(0))
-                self.parent.leito1.child_paciente.medico(self.txt_medico.GetLineText(0))
+                self.parent.leito1.child_paciente.nome = self.txt_nome.GetLineText(0)
+                self.parent.leito1.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
+                self.parent.leito1.child_paciente.data_entrada = self.txt_data_entrada.GetLineText(0)
+                self.parent.leito1.child_paciente.cpf = self.txt_cpf.GetLineText(0)
+                self.parent.leito1.child_paciente.telefone = self.txt_telefone.GetLineText(0)
+                self.parent.leito1.child_paciente.genero = self.txt_genero.GetLineText(0)
+                self.parent.leito1.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
+                self.parent.leito1.child_paciente.medico = self.txt_medico.GetLineText(0)
+
+                """ 
+                """
+                if self.dsp1 != '-1':
+                    print "del canal 1"
+                    del self.parent.child_canal_1
+                if self.dsp2 != '-1':
+                    print "del canal 2"
+                    del self.parent.child_canal_2
+
+                if self.dsp1 != '-1':
+                    #self.canal_1 = self.parent.dispositivo.Canal(self, -1, "", (94, 3), (280, 131), 'GRAY')
+                    self.parent.updLeito(self.dsp1, (94,3), 'GRAY')
+                if self.dsp2 != '-1':
+                    #self.canal_2 = self.parent.dispositivo.Canal(self, -1, "", (94+280+1, 3), (280, 131), 'GRAY')
+                    self.parent.updLeito(self.dsp2, (94+280+1,3), 'GRAY')
+                    
+
                 
             elif self.leito == 2:
                 self.parent.leito2.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
