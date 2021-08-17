@@ -52,13 +52,11 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
         """ Instantiate UDP server
         """
-        self.broadcom = udp.Udp(ip_addr, UDP_PORT, TCP_PORT)
+        #self.broadcom = udp.Udp(ip_addr, UDP_PORT, TCP_PORT)
 
         """ Instantiate TCP server
         """
-        self.tcp = tcp.Tcp(11, TCP_PORT)
-        #self.tcp = tcp.Tcp(12, TCP_PORT+1)
-        #self.tcp = tcp.Tcp(13, TCP_PORT+2)
+        #self.tcp = tcp.Tcp(11, TCP_PORT)
 
 
         """ Instantiate Leitos
@@ -103,7 +101,7 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                 self.dsp1 = dbase.dbParse(results, 'dispositiv_1')
                 self.dsp2 = dbase.dbParse(results, 'dispositiv_2')
                 self.dsp3 = dbase.dbParse(results, 'dispositiv_3')
-                self.dsp4 = dbase.dbParse(results, 'dispositiv_4')                
+                self.dsp4 = dbase.dbParse(results, 'dispositiv_4')
 
                 if i == 0:
                     self.leito1.child_paciente.nome = self.nome
@@ -120,11 +118,9 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito1.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
                     if self.dsp1 != '-1':
-                        self.child_canal_1 = dispositivo.Canal(self, -1, (94, 3), (280, 131), '#2A6DF7')
+                        self.child_canal_1 = dispositivo.Canal(self, -1, (94, 3), (280, 131), 'GRAY')
                     if self.dsp2 != '-1':
-                        self.child_canal_12 = dispositivo.Canal(self, -1, (94+280+1, 3), (280, 131), '#2A6DF7')
-                    
-                    
+                        self.child_canal_12 = dispositivo.Canal(self, -1, (94+280+1, 3), (280, 131), 'GRAY')
 
                 elif i == 1:
                     self.leito2.child_paciente.nome = self.nome
