@@ -2,6 +2,7 @@
 
 """Modulo main
    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 
+   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
 """
 from tinydb import where
 import wx
@@ -118,9 +119,9 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito1.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
                     if self.dsp1 != '-1':
-                        self.child_canal_1 = dispositivo.Canal(self, -1, (94, 3), (280, 131), 'GRAY')
+                        self.child_canal_1 = dispositivo.Canal(self, -1, (94, 3), (280, 131), '#3C4043')
                     if self.dsp2 != '-1':
-                        self.child_canal_12 = dispositivo.Canal(self, -1, (94+280+1, 3), (280, 131), 'GRAY')
+                        self.child_canal_12 = dispositivo.Canal(self, -1, (94+280+1, 3), (280, 131), '#3C4043')
 
                 elif i == 1:
                     self.leito2.child_paciente.nome = self.nome

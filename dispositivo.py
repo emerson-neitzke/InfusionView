@@ -143,58 +143,72 @@ class Canal(wx.Panel):  #classe herdada da classe "Panel"
 
       """instance variable unique to each instance
       """
-      medicamento = "Paroxetina     "
+      medicamento = ""
       self.medicamento = wx.StaticText(self, -1, medicamento, (14, 22))
       self.medicamento.SetForegroundColour('WHITE')
       self.font = wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
       self.medicamento.SetFont(self.font)
 
-      fluxo = '100                                                '
+      fluxo = ""
       self.fluxo = wx.StaticText(self, -1, fluxo, (14, 55))
       self.fluxo.SetForegroundColour('WHITE')
-      self.font = wx.Font(22, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
+      self.font = wx.Font(22, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
       self.fluxo.SetFont(self.font)
       self.fluxo.Wrap(400)
       
-      dot = '.'
+      dot = ""
       self.dot = wx.StaticText(self, -1, dot, (64, 67))
       self.dot.SetForegroundColour('WHITE')
-      self.font = wx.Font(12, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
+      self.font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
       self.dot.SetFont(self.font)
 
-      decimal = '05'
+      decimal = ""
       self.decimal = wx.StaticText(self, -1, decimal, (71, 67))
       self.decimal.SetForegroundColour('WHITE')
-      self.font = wx.Font(12, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
+      self.font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
       self.decimal.SetFont(self.font)
 
-      unity = 'ml/h'
+      unity = ""
       self.unidade = wx.StaticText(self, -1, unity, (91, 67))
       self.unidade.SetForegroundColour('WHITE')
       self.font = wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
       self.unidade.SetFont(self.font)
       
-      tempo = "12:00:00                                                          "
+      tempo = ""
       self.tempo_restante = wx.StaticText(self, -1, tempo, (190, 55))
       self.tempo_restante.SetForegroundColour('WHITE')
-      self.font = wx.Font(15, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
+      self.font = wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
       self.tempo_restante.SetFont(self.font)
       self.tempo_restante.Wrap(400)
 
-      lbl_vol_infdo = "Volume Infundido"
+      Dispositivo = "Dispositivo      "
+      self.lbl_dispositivo = wx.StaticText(self, -1, Dispositivo, (25, 55))
+      self.lbl_dispositivo.SetForegroundColour('WHITE')
+      self.font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+      self.lbl_dispositivo.SetFont(self.font)
+      self.lbl_dispositivo.Wrap(400)
+      
+      Desconectado = "desconectado       "
+      self.lbl_desconectado = wx.StaticText(self, -1, Desconectado, (113, 55))
+      self.lbl_desconectado.SetForegroundColour('WHITE')
+      self.font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+      self.lbl_desconectado.SetFont(self.font)
+      self.lbl_desconectado.Wrap(400)
+
+      lbl_vol_infdo = ""
       self.lbl_volume_infdo = wx.StaticText(self, -1, lbl_vol_infdo, (14, 92))
       self.lbl_volume_infdo.SetForegroundColour('WHITE')
       self.font = wx.Font(7, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
       self.lbl_volume_infdo.SetFont(self.font)
       
-      vol_infdo = "298.5/1000                                                  "
+      vol_infdo = ""
       self.volume_infdo = wx.StaticText(self, -1, vol_infdo, (14, 102))
       self.volume_infdo.SetForegroundColour('WHITE')
       self.font = wx.Font(13, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
       self.volume_infdo.SetFont(self.font)
       self.volume_infdo.Wrap(400)
       
-      lbl_vol_infdo_unity = "ml/h"
+      lbl_vol_infdo_unity = ""
       self.lbl_volume_infdo_unity = wx.StaticText(self, -1, lbl_vol_infdo_unity, (101, 107))
       self.lbl_volume_infdo_unity.SetForegroundColour('WHITE')
       self.font = wx.Font(8, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
