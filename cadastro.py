@@ -227,7 +227,10 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
             """Update dispositivos alocados
             """
-            print "Dispositivos alocados", self.lst_disp_aloc.GetCount()
+            for i in range(4):
+                self.disp = 'dispositiv_' + str(i+1)
+                dbase.db.update({self.disp: '-1'}, dbase.dbLeitos.leito == str(self.leito))           
+            
             for i in range(self.lst_disp_aloc.GetCount()):
                 self.disp = 'dispositiv_' + str(i+1)
                 print self.disp
@@ -244,7 +247,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito1.child_paciente.telefone(self.txt_telefone.GetLineText(0))
                 self.parent.leito1.child_paciente.genero(self.txt_genero.GetLineText(0))
                 self.parent.leito1.child_paciente.data_nascimento(self.txt_birth_day.GetLineText(0))
-                self.parent.leito1.child_paciente.medico(self.txt_medico.GetLineText(0))                
+                self.parent.leito1.child_paciente.medico(self.txt_medico.GetLineText(0))
                 
             elif self.leito == 2:
                 self.parent.leito2.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))

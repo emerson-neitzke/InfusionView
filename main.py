@@ -80,8 +80,8 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
         self.leito15 = leito.Leito(self, 15, (960,6*135), (960,135), '#232728')
         self.leito16 = leito.Leito(self, 16, (960,7*135), (960,135), '#232728')
 
-        self.child_canal_11 = dispositivo.Canal(self, -1, (94, 3), (280, 131), '#2A6DF7')
-        self.child_canal_12 = dispositivo.Canal(self, -1, (94+280+1, 3), (280, 131), '#2A6DF7')     
+        #self.child_canal_11 = dispositivo.Canal(self, -1, (94, 3), (280, 131), '#2A6DF7')
+        #self.child_canal_12 = dispositivo.Canal(self, -1, (94+280+1, 3), (280, 131), '#2A6DF7')     
         
 
         """ Update Leitos from database
@@ -100,6 +100,10 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                 self.data_de_nascimento = dbase.dbParse(results, 'data_de_nascimento')
                 self.tipo_sanguineo = dbase.dbParse(results, 'tipo_sanguineo')
                 self.medico = dbase.dbParse(results, 'medico')
+                self.dsp1 = dbase.dbParse(results, 'dispositiv_1')
+                self.dsp2 = dbase.dbParse(results, 'dispositiv_2')
+                self.dsp3 = dbase.dbParse(results, 'dispositiv_3')
+                self.dsp4 = dbase.dbParse(results, 'dispositiv_4')                
 
                 if i == 0:
                     self.leito1.child_paciente.nome = self.nome
@@ -114,6 +118,13 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
                     self.leito1.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito1.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
+
+                    if self.dsp1 != '-1':
+                        self.child_canal_1 = dispositivo.Canal(self, -1, (94, 3), (280, 131), '#2A6DF7')
+                    if self.dsp2 != '-1':
+                        self.child_canal_12 = dispositivo.Canal(self, -1, (94+280+1, 3), (280, 131), '#2A6DF7')
+                    
+                    
 
                 elif i == 1:
                     self.leito2.child_paciente.nome = self.nome
