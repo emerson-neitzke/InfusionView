@@ -88,7 +88,7 @@ class Status(wx.Panel): #classe herdada da classe "Panel"
       sizer.Add(self.serial, 1, flag = wx.CENTER)
       self.SetSizer(sizer)
 
-      if color != '#3C4043':  
+      if caption != "":
         self.batery = widgtBat(self, -1, "", 0, (2, 4), (24,10), 'GRAY')
         self.batery.ShowPos(2)
 
@@ -134,7 +134,7 @@ class VolInfundido(wx.Panel): #classe herdada da classe "Panel"
 
 
 class Canal(wx.Panel):  #classe herdada da classe "Panel"
-    def __init__(self, parent, id, serial, posxy, sizexy, color):
+    def __init__(self, parent, id, serial, posxy, sizexy, msg_dsp, msg_stat, color):
       painel = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_NONE)
       self.SetBackgroundColour(color)
 
@@ -144,6 +144,7 @@ class Canal(wx.Panel):  #classe herdada da classe "Panel"
 
       """instance variable unique to each instance
       """
+      
       medicamento = ""
       self.medicamento = wx.StaticText(self, -1, medicamento, (14, 22))
       self.medicamento.SetForegroundColour('WHITE')
@@ -182,14 +183,14 @@ class Canal(wx.Panel):  #classe herdada da classe "Panel"
       self.tempo_restante.SetFont(self.font)
       self.tempo_restante.Wrap(400)
 
-      Dispositivo = "Dispositivo      "
+      Dispositivo = msg_dsp + "      "
       self.lbl_dispositivo = wx.StaticText(self, -1, Dispositivo, (25, 55))
       self.lbl_dispositivo.SetForegroundColour('WHITE')
       self.font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
       self.lbl_dispositivo.SetFont(self.font)
       self.lbl_dispositivo.Wrap(400)
       
-      Desconectado = "desconectado       "
+      Desconectado = msg_stat + "       "
       self.lbl_desconectado = wx.StaticText(self, -1, Desconectado, (113, 55))
       self.lbl_desconectado.SetForegroundColour('WHITE')
       self.font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -215,9 +216,8 @@ class Canal(wx.Panel):  #classe herdada da classe "Panel"
       self.font = wx.Font(8, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
       self.lbl_volume_infdo_unity.SetFont(self.font)
       self.lbl_volume_infdo_unity.Wrap(400)
-
-      #serial = "TCH18090123"
-      self.status = Status(self, 1, serial, (-5,-2), (295,18), '#3C4043')
+        
+      self.status = Status(self, 1, serial, (-5,-2), (295,18), color)
 
 class Dispositivo(wx.Panel):  #classe herdada da classe "Panel"
     def __init__(self, parent, id, posxy, sizexy, color):
