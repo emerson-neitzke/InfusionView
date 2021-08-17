@@ -133,7 +133,7 @@ class VolInfundido(wx.Panel): #classe herdada da classe "Panel"
 
 
 class Canal(wx.Panel):  #classe herdada da classe "Panel"
-    def __init__(self, parent, id, posxy, sizexy, color):
+    def __init__(self, parent, id, serial, posxy, sizexy, color):
       painel = wx.Panel.__init__(self, parent, id, pos=posxy, size=sizexy, style=wx.BORDER_NONE)
       self.SetBackgroundColour(color)
 
@@ -215,7 +215,7 @@ class Canal(wx.Panel):  #classe herdada da classe "Panel"
       self.lbl_volume_infdo_unity.SetFont(self.font)
       self.lbl_volume_infdo_unity.Wrap(400)
 
-      serial = "TCH18090123"
+      #serial = "TCH18090123"
       self.status = Status(self, 1, serial, (-5,-2), (295,18), '#3C4043')
 
 class Dispositivo(wx.Panel):  #classe herdada da classe "Panel"
