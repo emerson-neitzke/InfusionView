@@ -126,14 +126,10 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito1.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito1.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-
                     if self.dsp1 != '-1':
-                        #self.child_canal_1 = dispositivo.Canal(self, -1, "", (94, 3), (280, 131), "Dispositivo", "desconectado", '#3C4043')
-                        #    def updLeito(self, serial, leito, disp, msg_disp, msg_stat, color):
-                        self.updLeito(self.dsp1, 1, 1, "Dispositivo", "desconectado", '#3C4043')
+                        self.allocaLeito(self.dsp1, 1, 1, "Dispositivo", "desconectado", '#3C4043')
                     if self.dsp2 != '-1':
-                        #self.child_canal_2 = dispositivo.Canal(self, -1, "", (94+280+1, 3), (280, 131), "Dispositivo", "desconectado", '#3C4043')
-                        self.updLeito(self.dsp2, 1, 2, "Dispositivo", "desconectado", '#3C4043')
+                        self.allocaLeito(self.dsp2, 1, 2, "Dispositivo", "desconectado", '#3C4043')
 
                 elif i == 1:
                     self.leito2.child_paciente.nome = self.nome
@@ -149,6 +145,11 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito2.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito2.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
+                    if self.dsp1 != '-1':
+                        self.allocaLeito(self.dsp1, 2, 1, "Dispositivo", "desconectado", '#3C4043')
+                    if self.dsp2 != '-1':
+                        self.allocaLeito(self.dsp2, 2, 2, "Dispositivo", "desconectado", '#3C4043')
+
                 elif i == 2:
                     self.leito3.child_paciente.nome = self.nome
                     self.leito3.child_paciente.prontuario = self.prontuario
@@ -162,6 +163,11 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
                     self.leito3.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito3.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
+
+                    if self.dsp1 != '-1':
+                        self.allocaLeito(self.dsp1, 3, 1, "Dispositivo", "desconectado", '#3C4043')
+                    if self.dsp2 != '-1':
+                        self.allocaLeito(self.dsp2, 3, 2, "Dispositivo", "desconectado", '#3C4043')                    
 
                 elif i == 3:
                     self.leito4.child_paciente.nome = self.nome
@@ -345,26 +351,66 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito16.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito16.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-    """Update leitos
+    """Alloca leito
     """
-    def updLeito(self, serial, leito, disp, msg_disp, msg_stat, color):
+    def allocaLeito(self, serial, leito, disp, msg_disp, msg_stat, color):
         print serial, leito, disp
+        """
         if leito == 1:
             if disp == 1:
                 self.matrix[0][0] = dispositivo.Canal(self, -1, serial, (94, 3), (280, 131), msg_disp, msg_stat, color)                
             elif disp == 2:
-                self.matrix[1][0] = dispositivo.Canal(self, -1, serial, (94+280+1, 3), (280, 131), msg_disp, msg_stat, color)
+                self.matrix[1][0] = dispositivo.Canal(self, -1, serial, (94+281, 3), (280, 131), msg_disp, msg_stat, color)
         elif leito == 2:
             if disp == 1:
-                self.child_canal_21 = dispositivo.Canal(self, -1, serial, (94, 3), (280, 131), msg_disp, msg_stat, color)
+                self.matrix[0][1] = dispositivo.Canal(self, -1, serial, (94, 137), (280, 131), msg_disp, msg_stat, color)
             elif disp == 2:
-                self.child_canal_22 = dispositivo.Canal(self, -1, serial, (94+280+1, 3), (280, 131), msg_disp, msg_stat, color)
+                self.matrix[1][1] = dispositivo.Canal(self, -1, serial, (94+281, 137), (280, 131), msg_disp, msg_stat, color)
+        elif leito == 3:
+            if disp == 1:
+                self.matrix[0][2] = dispositivo.Canal(self, -1, serial, (94, 272), (280, 131), msg_disp, msg_stat, color)
+            elif disp == 2:
+                self.matrix[1][2] = dispositivo.Canal(self, -1, serial, (94+281, 272), (280, 131), msg_disp, msg_stat, color)
+        """
+        for i in range(2):
+            self.matrix[i][leito-1] = dispositivo.Canal(self, -1, serial, (94 + (281 * i), 3 + (134 * (leito-1))), (280, 131), msg_disp, msg_stat, color)                
 
-    """Dealloc leitos
+
+    """Dealloca leito
     """
     def freeLeito(self, leito, disp):
-        self.updLeito("", leito, disp, "", "", '#232728')
+        self.allocaLeito("", leito, disp, "", "", '#232728')
         del self.matrix[disp-1][leito]
+
+    """Update leito
+    """
+    def updateLeito(self, parent, leito):
+        self.boo_empty = 'False'
+        self.parent = parent
+
+        if self.parent.lst_disp_aloc.GetCount() == 0:
+            for i in range(2):
+                if self.matrix[i][0] != 0:
+                    self.freeLeito(leito, i+1)
+        else:
+            self.boo_empty = 'True'
+            for i in range(2):
+                if self.matrix[i][0] == 0:
+                    continue
+                else:
+                    self.boo_empty = 'False'
+                    break;
+
+            if self.boo_empty == 'True':
+                for i in range(2):
+                    self.allocaLeito(self.parent.lst_disp_aloc.GetString(i), leito, i+1, "Dispositivo", "desconectado", '#3C4043')
+            else:
+                for i in range(2):
+                    try:
+                        self.freeLeito(leito, i+1)
+                        self.allocaLeito(self.parent.lst_disp_aloc.GetString(i), leito, i+1, "Dispositivo", "desconectado", '#3C4043')
+                    except:
+                        pass    
 
 
 
