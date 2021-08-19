@@ -144,6 +144,7 @@ class Canal(wx.Panel):  #classe herdada da classe "Panel"
 
       """instance variable unique to each instance
       """
+      self.serial = serial
       
       medicamento = ""
       self.medicamento = wx.StaticText(self, -1, medicamento, (14, 22))
@@ -217,7 +218,7 @@ class Canal(wx.Panel):  #classe herdada da classe "Panel"
       self.lbl_volume_infdo_unity.SetFont(self.font)
       self.lbl_volume_infdo_unity.Wrap(400)
         
-      self.status = Status(self, 1, serial, (-5,-2), (295,18), color)
+      self.status = Status(self, 1, self.serial, (-5,-2), (295,18), color)
 
 class Dispositivo(wx.Panel):  #classe herdada da classe "Panel"
     def __init__(self, parent, id, posxy, sizexy, color):

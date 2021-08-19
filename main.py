@@ -80,10 +80,16 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
         #self, -1, serial, (94, 3), (280, 131), msg_disp, msg_stat, color
         #self.child_canal_11 = dispositivo.Canal(self, -1, (94, 3), (280, 131), '#2A6DF7')
-        self.child_canal_11 = dispositivo.Canal(self, -1, "TCH189188012",(94, 3), (280, 131), "", "", '#2A6DF7')
+        #self.child_canal_11 = dispositivo.Canal(self, -1, "TCH189188012",(94, 3), (280, 131), "", "", '#2A6DF7')
         #self.child_canal_12 = dispositivo.Canal(self, -1, (94+280+1, 3), (280, 131), '#2A6DF7')     
 
+        w,h = 16,2
+        self.matrix = [[0 for x in range(w)] for y in range(h)]
+
         self.child_canal_11 = '-1'
+        self.child_canal_12 = '-1'
+        self.child_canal_21 = '-1'
+        self.child_canal_22 = '-1'
 
         """ Update Leitos from database
         """
@@ -120,7 +126,7 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito1.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito1.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    """
+
                     if self.dsp1 != '-1':
                         #self.child_canal_1 = dispositivo.Canal(self, -1, "", (94, 3), (280, 131), "Dispositivo", "desconectado", '#3C4043')
                         #    def updLeito(self, serial, leito, disp, msg_disp, msg_stat, color):
@@ -128,7 +134,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     if self.dsp2 != '-1':
                         #self.child_canal_2 = dispositivo.Canal(self, -1, "", (94+280+1, 3), (280, 131), "Dispositivo", "desconectado", '#3C4043')
                         self.updLeito("", 1, 2, "Dispositivo", "desconectado", '#3C4043')
-                    """    
 
                 elif i == 1:
                     self.leito2.child_paciente.nome = self.nome
@@ -346,16 +351,24 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
         print serial, leito, disp
         if leito == 1:
             if disp == 1:
-                self.child_canal_11 = dispositivo.Canal(self, -1, serial, (94, 3), (280, 131), msg_disp, msg_stat, color)
+                #self.child_canal_11 = dispositivo.Canal(self, -1, serial, (94, 3), (280, 131), msg_disp, msg_stat, color)
+                self.matrix[0][0] = dispositivo.Canal(self, -1, serial, (94, 3), (280, 131), msg_disp, msg_stat, color)                
             elif disp == 2:
-                self.child_canal_12 = dispositivo.Canal(self, -1, serial, (94+280+1, 3), (280, 131), msg_disp, msg_stat, color)
+                #self.child_canal_12 = dispositivo.Canal(self, -1, serial, (94+280+1, 3), (280, 131), msg_disp, msg_stat, color)
+                self.matrix[1][0] = dispositivo.Canal(self, -1, serial, (94+280+1, 3), (280, 131), msg_disp, msg_stat, color)
         elif leito == 2:
             if disp == 1:
                 self.child_canal_21 = dispositivo.Canal(self, -1, serial, (94, 3), (280, 131), msg_disp, msg_stat, color)
             elif disp == 2:
                 self.child_canal_22 = dispositivo.Canal(self, -1, serial, (94+280+1, 3), (280, 131), msg_disp, msg_stat, color)
-        
-                
+
+    """Dealloc leitos
+    """
+    def freeLeito(self, leito, disp):
+        self.updLeito("", leito, disp, "", "", '#232728')
+        del self.matrix[disp-1][leito]
+
+
 
 if __name__ == "__main__":
     main()

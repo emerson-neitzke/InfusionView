@@ -204,6 +204,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 	def CadastrarOnClicked(self, event):
           print("click button cadastrar")
           #self.parent.leito1.child_paciente.nome = "Publisher"
+          
+          self.boo_empty = 'False'
 
           if Cadastro.isDataValid(self) == True:
             dbase.db.update({'nome': self.txt_nome.GetLineText(0)}, dbase.dbLeitos.leito == str(self.leito))
@@ -251,41 +253,29 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito1.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito1.child_paciente.medico = self.txt_medico.GetLineText(0)
 
-                """ destroy
-                
-                if self.dsp1 != '-1':
-                    del self.parent.child_canal_1
-                if self.dsp2 != '-1':
-                    del self.parent.child_canal_2
-                """    
-
-                """ clear
                 """
-                #if self.dsp1 != '-1':
-                #self.parent.updLeito("", self.leito, 1, "", "", '#232728')
-                #if self.dsp2 != '-1':
-                #self.parent.updLeito("", self.leito, 2, "", "", '#232728')
-
-                for i in range(self.lst_disp_aloc.GetCount()):
-                    self.disp_alocados[i] = self.lst_disp_aloc.GetString(i)
-                
-                print self.disp_alocados[0]
-                print self.disp_alocados[1]
-                #print self.listar[1,2]
-
-                if self.parent.child_canal_11 != '-1':
-                    print "11 -1"    
-
-                """ instantiate
                 """
- 
-                if self.disp_alocados[0] != '-1':
-                    #self.parent.updLeito("", self.leito, 1, "Dispositivo", "desconectado", '#232728')
-                    self.parent.updLeito("", self.leito, 1, "Dispositivo", "desconectado", '#3C4043')
-                if self.disp_alocados[1] != '-1':
-                    #self.parent.updLeito("", self.leito, 2, "Dispositivo", "desconectado", '#232728')
-                    self.parent.updLeito("", self.leito, 2, "Dispositivo", "desconectado", '#3C4043')
+                if self.lst_disp_aloc.GetCount() == 0:
+                    for i in range(2):
+                        print self.parent.matrix[i][0]
+                        if self.parent.matrix[i][0] != 0:
+                            self.parent.freeLeito(self.leito, i+1)
 
+                else:
+                    self.boo_empty = 'True'
+                    for i in range(2):
+                        if self.parent.matrix[i][0] == 0:
+                            continue
+                        else:
+                            self.boo_empty = 'False'
+                            break;
+
+                    if self.boo_empty == 'True':
+                        for i in range(2):
+                            self.parent.updLeito(self.lst_disp_aloc.GetString(i), self.leito, i+1, "Dispositivo", "desconectado", '#3C4043')
+
+                    else:
+                        pass
                 
             elif self.leito == 2:
                 self.parent.leito2.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
