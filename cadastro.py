@@ -260,7 +260,6 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                         print self.parent.matrix[i][0]
                         if self.parent.matrix[i][0] != 0:
                             self.parent.freeLeito(self.leito, i+1)
-
                 else:
                     self.boo_empty = 'True'
                     for i in range(2):
@@ -273,9 +272,13 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                     if self.boo_empty == 'True':
                         for i in range(2):
                             self.parent.updLeito(self.lst_disp_aloc.GetString(i), self.leito, i+1, "Dispositivo", "desconectado", '#3C4043')
-
                     else:
-                        pass
+                        for i in range(2):
+                            try:
+                                self.parent.freeLeito(self.leito, i+1)
+                                self.parent.updLeito(self.lst_disp_aloc.GetString(i), self.leito, i+1, "Dispositivo", "desconectado", '#3C4043')
+                            except:
+                                pass    
                 
             elif self.leito == 2:
                 self.parent.leito2.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
