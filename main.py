@@ -113,8 +113,14 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito1.child_paciente.tipo_sanguineo = self.tipo_sanguineo
                     self.leito1.child_paciente.medico = self.medico
 
-                    self.leito1.child_paciente.lbl_nome.SetLabel(self.nome)
-                    self.leito1.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
+
+                    self.leito1.child_paciente.prontuarioSetposition(self.prontuario)
+
+                    #self.leito1.child_paciente.lbl_nome.SetLabel(self.nome)
+
+                    
+                    self.leito1.child_paciente.nomeSetposition(self.nome)
+                    
 
                 elif bed == 1:
                     self.leito2.child_paciente.nome = self.nome

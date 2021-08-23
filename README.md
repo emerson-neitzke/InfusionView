@@ -16,3 +16,5 @@
 # 2 - Executar o comando: 
 #	sudo pip install wxPython-4.0.2-cp27-cp27mu-linux_x86_64.whl 
 #
+# Executar
+# python main.py

@@ -62,11 +62,43 @@ class Paciente(wx.Panel):   #classe herdada da classe "Panel"
         print("Left button of the mouse was clicked\n", self.leito)
         self.cadastro = cadastro.Cadastro(self.parent, self.leito, 1, 1, '#3C4043')
 
-    def prontuarioSetposition(self, event):
-        pass
+    def prontuarioSetposition(self, prontuario):
+        self.lbl_prontuario.Destroy()
 
-    def nomeSetposition(self, event):
-        pass
+        self.st = ""
+        self.dx = 3
+
+        if (len(prontuario)*8) >= 88:
+            for i in range(9):
+                self.st = self.st + prontuario[i]
+            self.st += "..."
+        else:
+            """centraliza
+            """
+            self.dx = 88/2 - ((len(prontuario)*8)/2)        
+            self.st = prontuario
+
+        self.lbl_prontuario = wx.StaticText(self, -1, "", (self.dx, 75))
+        self.lbl_prontuario.SetForegroundColour('WHITE')
+        self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        self.lbl_prontuario.SetFont(self.font)
+
+        self.lbl_prontuario.SetLabel(self.st)
+
+    def nomeSetposition(self, nome):
+        self.lbl_nome.Destroy()
+
+        """centraliza
+        """
+        self.dx = 88/2 - ((len(nome)*7)/2)
+
+        self.lbl_nome = wx.StaticText(self, -1, "", (self.dx, 50))
+        self.lbl_nome.SetForegroundColour('WHITE')
+        self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        self.lbl_nome.SetFont(self.font)
+        
+        self.lbl_nome.SetLabel(nome)
+
         
 
 # Codigo de inicializacao

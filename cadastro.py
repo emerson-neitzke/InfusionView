@@ -478,7 +478,6 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
                 self.parent.updateLeito(self, self.leito)
 
-
 	def EditarOnClicked(self, event):
           print("click button Editar")
           #self.passw = password.Password(-1, 960, 540, '#3C4043')
@@ -491,7 +490,6 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.txt_birth_day.Enable()
           self.txt_medico.Enable()
           self.btn_cadastrar.Enable()
-
 
 	def AltaOnClicked(self, event):
           """Remove do DB
