@@ -494,22 +494,38 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
 
 
 	def AltaOnClicked(self, event):
+          """Remove do DB
+          """
+          dbase.db.update({'nome': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+          dbase.db.update({'prontuario': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+          dbase.db.update({'data_entrada': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+          dbase.db.update({'cpf': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+          dbase.db.update({'telefone': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+          dbase.db.update({'genero': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+          dbase.db.update({'data_de_nascimento': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+          dbase.db.update({'medico': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+          dbase.db.update({'flag': 'false'}, dbase.dbLeitos.leito == str(self.leito))
+
+          for i in range(4):
+            self.disp = 'dispositiv_' + str(i+1)
+            dbase.db.update({self.disp: '-1'}, dbase.dbLeitos.leito == str(self.leito))
+
+          self.txt_nome.SetValue("")
+          self.txt_prontuario.SetValue("")
+          self.txt_data_entrada.SetValue("")
+          self.txt_cpf.SetValue("")
+          self.txt_telefone.SetValue("")
+          self.txt_genero.SetValue("")
+          self.txt_birth_day.SetValue("")
+          self.txt_medico.SetValue("")
+
+          for i in range(self.lst_disp_aloc.GetCount()):
+            self.lst_disp_disp.Append(self.lst_disp_aloc.GetString(i))
+
+          for i in range(self.lst_disp_aloc.GetCount()):
+            self.lst_disp_aloc.Delete(0)
+
           if self.leito == 1:
-            self.txt_nome.SetValue("")
-            self.txt_prontuario.SetValue("")
-            self.txt_data_entrada.SetValue("")
-            self.txt_cpf.SetValue("")
-            self.txt_telefone.SetValue("")
-            self.txt_genero.SetValue("")
-            self.txt_birth_day.SetValue("")
-            self.txt_medico.SetValue("")
-
-            for i in range(self.lst_disp_aloc.GetCount()):
-                self.lst_disp_disp.Append(self.lst_disp_aloc.GetString(i))
-
-            for i in range(self.lst_disp_aloc.GetCount()):
-                self.lst_disp_aloc.Delete(0)
-
             self.parent.leito1.child_paciente.lbl_nome.SetLabel("")
             self.parent.leito1.child_paciente.lbl_prontuario.SetLabel("")
 
@@ -522,23 +538,202 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito1.child_paciente.data_nascimento = ""
             self.parent.leito1.child_paciente.medico = ""
 
-            dbase.db.update({'nome': '-1'}, dbase.dbLeitos.leito == str(self.leito))
-            dbase.db.update({'prontuario': '-1'}, dbase.dbLeitos.leito == str(self.leito))
-            dbase.db.update({'data_entrada': '-1'}, dbase.dbLeitos.leito == str(self.leito))
-            dbase.db.update({'cpf': '-1'}, dbase.dbLeitos.leito == str(self.leito))
-            dbase.db.update({'telefone': '-1'}, dbase.dbLeitos.leito == str(self.leito))
-            dbase.db.update({'genero': '-1'}, dbase.dbLeitos.leito == str(self.leito))
-            dbase.db.update({'data_de_nascimento': '-1'}, dbase.dbLeitos.leito == str(self.leito))
-            dbase.db.update({'medico': '-1'}, dbase.dbLeitos.leito == str(self.leito))
-            dbase.db.update({'flag': 'false'}, dbase.dbLeitos.leito == str(self.leito))
+          elif self.leito == 2:
+            self.parent.leito2.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito2.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito2.child_paciente.nome = ""
+            self.parent.leito2.child_paciente.prontuario = ""
+            self.parent.leito2.child_paciente.data_entrada = ""
+            self.parent.leito2.child_paciente.cpf = ""
+            self.parent.leito2.child_paciente.telefone = ""
+            self.parent.leito2.child_paciente.genero = ""
+            self.parent.leito2.child_paciente.data_nascimento = ""
+            self.parent.leito2.child_paciente.medico = ""
             
-            for i in range(4):
-                self.disp = 'dispositiv_' + str(i+1)
-                dbase.db.update({self.disp: '-1'}, dbase.dbLeitos.leito == str(self.leito))           
+          elif self.leito == 3:
+            self.parent.leito3.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito3.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito3.child_paciente.nome = ""
+            self.parent.leito3.child_paciente.prontuario = ""
+            self.parent.leito3.child_paciente.data_entrada = ""
+            self.parent.leito3.child_paciente.cpf = ""
+            self.parent.leito3.child_paciente.telefone = ""
+            self.parent.leito3.child_paciente.genero = ""
+            self.parent.leito3.child_paciente.data_nascimento = ""
+            self.parent.leito3.child_paciente.medico = ""
+
+          elif self.leito == 4:
+            self.parent.leito4.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito4.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito4.child_paciente.nome = ""
+            self.parent.leito4.child_paciente.prontuario = ""
+            self.parent.leito4.child_paciente.data_entrada = ""
+            self.parent.leito4.child_paciente.cpf = ""
+            self.parent.leito4.child_paciente.telefone = ""
+            self.parent.leito4.child_paciente.genero = ""
+            self.parent.leito4.child_paciente.data_nascimento = ""
+            self.parent.leito4.child_paciente.medico = ""
+
+          elif self.leito == 5:
+            self.parent.leito5.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito5.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito5.child_paciente.nome = ""
+            self.parent.leito5.child_paciente.prontuario = ""
+            self.parent.leito5.child_paciente.data_entrada = ""
+            self.parent.leito5.child_paciente.cpf = ""
+            self.parent.leito5.child_paciente.telefone = ""
+            self.parent.leito5.child_paciente.genero = ""
+            self.parent.leito5.child_paciente.data_nascimento = ""
+            self.parent.leito5.child_paciente.medico = ""
+
+          elif self.leito == 6:
+            self.parent.leito6.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito6.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito6.child_paciente.nome = ""
+            self.parent.leito6.child_paciente.prontuario = ""
+            self.parent.leito6.child_paciente.data_entrada = ""
+            self.parent.leito6.child_paciente.cpf = ""
+            self.parent.leito6.child_paciente.telefone = ""
+            self.parent.leito6.child_paciente.genero = ""
+            self.parent.leito6.child_paciente.data_nascimento = ""
+            self.parent.leito6.child_paciente.medico = ""
+
+          elif self.leito == 7:
+            self.parent.leito7.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito7.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito7.child_paciente.nome = ""
+            self.parent.leito7.child_paciente.prontuario = ""
+            self.parent.leito7.child_paciente.data_entrada = ""
+            self.parent.leito7.child_paciente.cpf = ""
+            self.parent.leito7.child_paciente.telefone = ""
+            self.parent.leito7.child_paciente.genero = ""
+            self.parent.leito7.child_paciente.data_nascimento = ""
+            self.parent.leito7.child_paciente.medico = ""
+
+          elif self.leito == 8:
+            self.parent.leito8.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito8.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito8.child_paciente.nome = ""
+            self.parent.leito8.child_paciente.prontuario = ""
+            self.parent.leito8.child_paciente.data_entrada = ""
+            self.parent.leito8.child_paciente.cpf = ""
+            self.parent.leito8.child_paciente.telefone = ""
+            self.parent.leito8.child_paciente.genero = ""
+            self.parent.leito8.child_paciente.data_nascimento = ""
+            self.parent.leito8.child_paciente.medico = ""
+
+          elif self.leito == 9:
+            self.parent.leito9.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito9.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito9.child_paciente.nome = ""
+            self.parent.leito9.child_paciente.prontuario = ""
+            self.parent.leito9.child_paciente.data_entrada = ""
+            self.parent.leito9.child_paciente.cpf = ""
+            self.parent.leito9.child_paciente.telefone = ""
+            self.parent.leito9.child_paciente.genero = ""
+            self.parent.leito9.child_paciente.data_nascimento = ""
+            self.parent.leito9.child_paciente.medico = ""
             
-            
-          
-          
+          elif self.leito == 10:
+            self.parent.leito10.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito10.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito10.child_paciente.nome = ""
+            self.parent.leito10.child_paciente.prontuario = ""
+            self.parent.leito10.child_paciente.data_entrada = ""
+            self.parent.leito10.child_paciente.cpf = ""
+            self.parent.leito10.child_paciente.telefone = ""
+            self.parent.leito10.child_paciente.genero = ""
+            self.parent.leito10.child_paciente.data_nascimento = ""
+            self.parent.leito10.child_paciente.medico = ""
+
+          elif self.leito == 11:
+            self.parent.leito11.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito11.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito11.child_paciente.nome = ""
+            self.parent.leito11.child_paciente.prontuario = ""
+            self.parent.leito11.child_paciente.data_entrada = ""
+            self.parent.leito11.child_paciente.cpf = ""
+            self.parent.leito11.child_paciente.telefone = ""
+            self.parent.leito11.child_paciente.genero = ""
+            self.parent.leito11.child_paciente.data_nascimento = ""
+            self.parent.leito11.child_paciente.medico = ""
+
+          elif self.leito == 12:
+            self.parent.leito12.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito12.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito12.child_paciente.nome = ""
+            self.parent.leito12.child_paciente.prontuario = ""
+            self.parent.leito12.child_paciente.data_entrada = ""
+            self.parent.leito12.child_paciente.cpf = ""
+            self.parent.leito12.child_paciente.telefone = ""
+            self.parent.leito12.child_paciente.genero = ""
+            self.parent.leito12.child_paciente.data_nascimento = ""
+            self.parent.leito12.child_paciente.medico = ""
+
+          elif self.leito == 13:
+            self.parent.leito13.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito13.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito13.child_paciente.nome = ""
+            self.parent.leito13.child_paciente.prontuario = ""
+            self.parent.leito13.child_paciente.data_entrada = ""
+            self.parent.leito13.child_paciente.cpf = ""
+            self.parent.leito13.child_paciente.telefone = ""
+            self.parent.leito13.child_paciente.genero = ""
+            self.parent.leito13.child_paciente.data_nascimento = ""
+            self.parent.leito13.child_paciente.medico = ""
+
+          elif self.leito == 14:
+            self.parent.leito14.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito14.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito14.child_paciente.nome = ""
+            self.parent.leito14.child_paciente.prontuario = ""
+            self.parent.leito14.child_paciente.data_entrada = ""
+            self.parent.leito14.child_paciente.cpf = ""
+            self.parent.leito14.child_paciente.telefone = ""
+            self.parent.leito14.child_paciente.genero = ""
+            self.parent.leito14.child_paciente.data_nascimento = ""
+            self.parent.leito14.child_paciente.medico = ""
+
+          elif self.leito == 15:
+            self.parent.leito15.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito15.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito15.child_paciente.nome = ""
+            self.parent.leito15.child_paciente.prontuario = ""
+            self.parent.leito15.child_paciente.data_entrada = ""
+            self.parent.leito15.child_paciente.cpf = ""
+            self.parent.leito15.child_paciente.telefone = ""
+            self.parent.leito15.child_paciente.genero = ""
+            self.parent.leito15.child_paciente.data_nascimento = ""
+            self.parent.leito15.child_paciente.medico = ""
+
+          elif self.leito == 16:
+            self.parent.leito16.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito16.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito16.child_paciente.nome = ""
+            self.parent.leito16.child_paciente.prontuario = ""
+            self.parent.leito16.child_paciente.data_entrada = ""
+            self.parent.leito16.child_paciente.cpf = ""
+            self.parent.leito16.child_paciente.telefone = ""
+            self.parent.leito16.child_paciente.genero = ""
+            self.parent.leito16.child_paciente.data_nascimento = ""
+            self.parent.leito16.child_paciente.medico = ""
+
+          self.parent.updateLeito(self, self.leito)
 
 	def RightOnClicked(self, event):
           self.item = self.lst_disp_disp.GetSelection()
