@@ -162,7 +162,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.txt_genero.SetValue(self.genero)
             self.txt_birth_day.SetValue(self.data_de_nascimento)
             self.txt_medico.SetValue(self.medico)
-            
+
             if self.dsp1 != '-1':
                 self.lst_disp_aloc.Append(self.dsp1)
             if self.dsp2 != '-1':
@@ -251,36 +251,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito1.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito1.child_paciente.medico = self.txt_medico.GetLineText(0)
 
-                """
-                
-                if self.lst_disp_aloc.GetCount() == 0:
-                    for i in range(2):
-                        print self.parent.matrix[i][0]
-                        if self.parent.matrix[i][0] != 0:
-                            self.parent.freeLeito(self.leito, i+1)
-                else:
-                    self.boo_empty = 'True'
-                    for i in range(2):
-                        if self.parent.matrix[i][0] == 0:
-                            continue
-                        else:
-                            self.boo_empty = 'False'
-                            break;
-
-                    if self.boo_empty == 'True':
-                        for i in range(2):
-                            self.parent.allocaLeito(self.lst_disp_aloc.GetString(i), self.leito, i+1, "Dispositivo", "desconectado", '#3C4043')
-                    else:
-                        for i in range(2):
-                            try:
-                                self.parent.freeLeito(self.leito, i+1)
-                                self.parent.allocaLeito(self.lst_disp_aloc.GetString(i), self.leito, i+1, "Dispositivo", "desconectado", '#3C4043')
-                            except:
-                                pass    
-                """
-
                 self.parent.updateLeito(self, self.leito)
-                
+
             elif self.leito == 2:
                 self.parent.leito2.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
                 self.parent.leito2.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
@@ -504,7 +476,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito16.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito16.child_paciente.medico = self.txt_medico.GetLineText(0)
 
-                self.parent.updateLeito(self, self.leito)                
+                self.parent.updateLeito(self, self.leito)
 
 
 	def EditarOnClicked(self, event):
@@ -519,10 +491,54 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
           self.txt_birth_day.Enable()
           self.txt_medico.Enable()
           self.btn_cadastrar.Enable()
-          
+
 
 	def AltaOnClicked(self, event):
-          print("click button alta", self.txt_disp_disp.GetLineText(1))
+          if self.leito == 1:
+            self.txt_nome.SetValue("")
+            self.txt_prontuario.SetValue("")
+            self.txt_data_entrada.SetValue("")
+            self.txt_cpf.SetValue("")
+            self.txt_telefone.SetValue("")
+            self.txt_genero.SetValue("")
+            self.txt_birth_day.SetValue("")
+            self.txt_medico.SetValue("")
+
+            for i in range(self.lst_disp_aloc.GetCount()):
+                self.lst_disp_disp.Append(self.lst_disp_aloc.GetString(i))
+
+            for i in range(self.lst_disp_aloc.GetCount()):
+                self.lst_disp_aloc.Delete(0)
+
+            self.parent.leito1.child_paciente.lbl_nome.SetLabel("")
+            self.parent.leito1.child_paciente.lbl_prontuario.SetLabel("")
+
+            self.parent.leito1.child_paciente.nome = ""
+            self.parent.leito1.child_paciente.prontuario = ""
+            self.parent.leito1.child_paciente.data_entrada = ""
+            self.parent.leito1.child_paciente.cpf = ""
+            self.parent.leito1.child_paciente.telefone = ""
+            self.parent.leito1.child_paciente.genero = ""
+            self.parent.leito1.child_paciente.data_nascimento = ""
+            self.parent.leito1.child_paciente.medico = ""
+
+            dbase.db.update({'nome': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'prontuario': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'data_entrada': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'cpf': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'telefone': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'genero': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'data_de_nascimento': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'medico': '-1'}, dbase.dbLeitos.leito == str(self.leito))
+            dbase.db.update({'flag': 'false'}, dbase.dbLeitos.leito == str(self.leito))
+            
+            for i in range(4):
+                self.disp = 'dispositiv_' + str(i+1)
+                dbase.db.update({self.disp: '-1'}, dbase.dbLeitos.leito == str(self.leito))           
+            
+            
+          
+          
 
 	def RightOnClicked(self, event):
           self.item = self.lst_disp_disp.GetSelection()
