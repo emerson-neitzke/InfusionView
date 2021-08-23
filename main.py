@@ -1,7 +1,6 @@
 # -*- iso-8859-1 -*-
 
 """Modulo main
-   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
 """
 from tinydb import where
 import wx
@@ -102,7 +101,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                 for x in range(4):
                     self.disp = 'dispositiv_' + str(x+1)
                     self.dispositivo[x] = dbase.dbParse(results, self.disp)
-                    print "bed/dispositivo:", bed+1, self.dispositivo[x]  
 
                 if bed == 0:
                     self.leito1.child_paciente.nome = self.nome
@@ -118,9 +116,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito1.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito1.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')
-
                 elif bed == 1:
                     self.leito2.child_paciente.nome = self.nome
                     self.leito2.child_paciente.prontuario = self.prontuario
@@ -134,9 +129,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
                     self.leito2.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito2.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
-
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')
 
                 elif bed == 2:
                     self.leito3.child_paciente.nome = self.nome
@@ -152,9 +144,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito3.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito3.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')                    
-
                 elif bed == 3:
                     self.leito4.child_paciente.nome = self.nome
                     self.leito4.child_paciente.prontuario = self.prontuario
@@ -168,9 +157,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
                     self.leito4.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito4.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
-
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')
 
                 elif bed == 4:
                     self.leito5.child_paciente.nome = self.nome
@@ -186,9 +172,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito5.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito5.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')                    
-
                 elif bed == 5:
                     self.leito6.child_paciente.nome = self.nome
                     self.leito6.child_paciente.prontuario = self.prontuario
@@ -202,9 +185,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
                     self.leito6.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito6.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
-
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')
 
                 elif bed == 6:
                     self.leito7.child_paciente.nome = self.nome
@@ -220,9 +200,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito7.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito7.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')                    
-
                 elif bed == 7:
                     self.leito8.child_paciente.nome = self.nome
                     self.leito8.child_paciente.prontuario = self.prontuario
@@ -237,9 +214,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito8.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito8.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')
-
                 elif bed == 8:
                     self.leito9.child_paciente.nome = self.nome
                     self.leito9.child_paciente.prontuario = self.prontuario
@@ -253,9 +227,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
                     self.leito9.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito9.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
-                    
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')                                        
 
                 elif bed == 9:
                     self.leito10.child_paciente.nome = self.nome
@@ -271,9 +242,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito10.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito10.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')                                        
-
                 elif bed == 10:
                     self.leito11.child_paciente.nome = self.nome
                     self.leito11.child_paciente.prontuario = self.prontuario
@@ -287,9 +255,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
                     self.leito11.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito11.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
-
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')
 
                 elif bed == 11:
                     self.leito12.child_paciente.nome = self.nome
@@ -305,9 +270,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito12.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito12.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')
-
                 elif bed == 12:
                     self.leito13.child_paciente.nome = self.nome
                     self.leito13.child_paciente.prontuario = self.prontuario
@@ -321,9 +283,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
                     self.leito13.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito13.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
-
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')                                        
 
                 elif bed == 13:
                     self.leito14.child_paciente.nome = self.nome
@@ -339,9 +298,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito14.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito14.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')
-
                 elif bed == 14:
                     self.leito15.child_paciente.nome = self.nome
                     self.leito15.child_paciente.prontuario = self.prontuario
@@ -355,9 +311,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
                     self.leito15.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito15.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
-
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')                                        
 
                 elif bed == 15:
                     self.leito16.child_paciente.nome = self.nome
@@ -373,8 +326,8 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
                     self.leito16.child_paciente.lbl_nome.SetLabel(self.nome)
                     self.leito16.child_paciente.lbl_prontuario.SetLabel(self.prontuario)
 
-                    for c in range(2):
-                        self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')                                        
+                for c in range(2):
+                    self.allocaLeito(self.dispositivo[c], bed+1, c, "Dispositivo", "desconectado", '#3C4043')                                        
 
     """Alloca leito
     """
@@ -390,7 +343,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
     """
     def freeLeito(self, leito, disp):
         self.allocaLeito("", leito, disp, "", "", '#232728')
-        print "Free leito/disp:", leito, disp
         del self.matrix[disp][leito-1]
         self.matrix[disp][leito-1] = 0
 
@@ -407,7 +359,6 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
         else:
             self.boo_empty = 'True'
             for c in range(2):
-                print "isEmpty():", c, leito, self.matrix[c][leito-1]
                 if self.matrix[c][leito-1] == 0:
                     continue
                 else:

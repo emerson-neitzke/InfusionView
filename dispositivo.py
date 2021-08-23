@@ -88,9 +88,11 @@ class Status(wx.Panel): #classe herdada da classe "Panel"
       sizer.Add(self.serial, 1, flag = wx.CENTER)
       self.SetSizer(sizer)
 
+      """  
       if caption != "":
         self.batery = widgtBat(self, -1, "", 0, (2, 4), (24,10), 'GRAY')
         self.batery.ShowPos(2)
+      """  
 
 class VolRestante(wx.Panel):  #classe herdada da classe "Panel"
     def __init__(self, parent, id, posxy, sizexy, color):

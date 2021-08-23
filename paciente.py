@@ -62,7 +62,12 @@ class Paciente(wx.Panel):   #classe herdada da classe "Panel"
         print("Left button of the mouse was clicked\n", self.leito)
         self.cadastro = cadastro.Cadastro(self.parent, self.leito, 1, 1, '#3C4043')
 
+    def prontuarioSetposition(self, event):
+        pass
 
+    def nomeSetposition(self, event):
+        pass
+        
 
 # Codigo de inicializacao
 print "Inicializando modulo paciente..."
