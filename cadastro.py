@@ -239,8 +239,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 dbase.db.update({self.disp: self.lst_disp_aloc.GetString(i)}, dbase.dbLeitos.leito == str(self.leito))
 
             if self.leito == 1:
-                self.parent.leito1.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito1.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito1.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito1.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
 
                 self.parent.leito1.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito1.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -250,6 +250,9 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito1.child_paciente.genero = self.txt_genero.GetLineText(0)
                 self.parent.leito1.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito1.child_paciente.medico = self.txt_medico.GetLineText(0)
+                
+                self.parent.leito1.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito1.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
 
                 self.parent.updateLeito(self, self.leito)
 
@@ -431,7 +434,7 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito13.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito13.child_paciente.medico = self.txt_medico.GetLineText(0)
 
-                self.parent.updateLeito(self, self.leito)                
+                self.parent.updateLeito(self, self.leito)
 
             elif self.leito == 14:
                 self.parent.leito14.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))

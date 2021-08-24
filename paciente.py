@@ -46,12 +46,22 @@ class Paciente(wx.Panel):   #classe herdada da classe "Panel"
         self.font = wx.Font(12, wx.DECORATIVE, wx.NORMAL, wx.NORMAL)
         self.lbl_id.SetFont(self.font)
 
-        self.lbl_nome = wx.StaticText(self, -1, "", (3, 50))
+        self.lbl_nome = wx.StaticText(self, -1, "", (3, 45))
         self.lbl_nome.SetForegroundColour('WHITE')
         self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
         self.lbl_nome.SetFont(self.font)
 
-        self.lbl_prontuario = wx.StaticText(self, -1, "", (3, 75))
+        self.lbl_mid_nome = wx.StaticText(self, -1, "", (3, 63))
+        self.lbl_mid_nome.SetForegroundColour('WHITE')
+        self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        self.lbl_mid_nome.SetFont(self.font)
+
+        self.lbl_sub_nome = wx.StaticText(self, -1, "", (3, 81))
+        self.lbl_sub_nome.SetForegroundColour('WHITE')
+        self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        self.lbl_sub_nome.SetFont(self.font)
+
+        self.lbl_prontuario = wx.StaticText(self, -1, "", (3, 105))
         self.lbl_prontuario.SetForegroundColour('WHITE')
         self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
         self.lbl_prontuario.SetFont(self.font)
@@ -78,7 +88,7 @@ class Paciente(wx.Panel):   #classe herdada da classe "Panel"
             self.dx = 88/2 - ((len(prontuario)*8)/2)        
             self.st = prontuario
 
-        self.lbl_prontuario = wx.StaticText(self, -1, "", (self.dx, 75))
+        self.lbl_prontuario = wx.StaticText(self, -1, "", (self.dx, 105))
         self.lbl_prontuario.SetForegroundColour('WHITE')
         self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
         self.lbl_prontuario.SetFont(self.font)
@@ -87,17 +97,56 @@ class Paciente(wx.Panel):   #classe herdada da classe "Panel"
 
     def nomeSetposition(self, nome):
         self.lbl_nome.Destroy()
+        self.lbl_mid_nome.Destroy()        
+        self.lbl_sub_nome.Destroy()        
+
+        self.st = ["", "", ""]
+        self.stc = 0
+        self.dx1 = 3
+        self.dx2 = 3        
+        self.dx3 = 3
+
+        for i in range(len(nome)):
+            if nome[i] != ' ':
+                self.st[self.stc] += nome[i]
+                continue
+            else:
+                if len((self.st[self.stc])*8) >= 88:
+                    self.st[self.stc] = ""
+                    for i in range(9):
+                        self.st[self.stc] += nome[i]
+                    self.st[self.stc] += "..."
+                    self.stc += 1
+                else:
+                    self.stc += 1
+                    if self.stc > 2:
+                        self.st[2] += "..."
+                        break
 
         """centraliza
         """
-        self.dx = 88/2 - ((len(nome)*7)/2)
+        self.dx1 = 88/2 - ((len(self.st[0])*7)/2)
+        self.dx2 = 88/2 - ((len(self.st[1])*7)/2)
+        self.dx3 = 88/2 - ((len(self.st[2])*7)/2)
 
-        self.lbl_nome = wx.StaticText(self, -1, "", (self.dx, 50))
+        self.lbl_nome = wx.StaticText(self, -1, "", (self.dx1, 45))
         self.lbl_nome.SetForegroundColour('WHITE')
         self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
         self.lbl_nome.SetFont(self.font)
-        
-        self.lbl_nome.SetLabel(nome)
+
+        self.lbl_mid_nome = wx.StaticText(self, -1, "", (self.dx2, 63))
+        self.lbl_mid_nome.SetForegroundColour('WHITE')
+        self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        self.lbl_mid_nome.SetFont(self.font)
+
+        self.lbl_sub_nome = wx.StaticText(self, -1, "", (self.dx3, 81))
+        self.lbl_sub_nome.SetForegroundColour('WHITE')
+        self.font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        self.lbl_sub_nome.SetFont(self.font)
+
+        self.lbl_nome.SetLabel(self.st[0])
+        self.lbl_mid_nome.SetLabel(self.st[1])
+        self.lbl_sub_nome.SetLabel(self.st[2])
 
         
 
