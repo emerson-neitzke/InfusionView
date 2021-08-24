@@ -257,9 +257,9 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.updateLeito(self, self.leito)
 
             elif self.leito == 2:
-                self.parent.leito2.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito2.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
-                
+                #self.parent.leito2.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito2.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+
                 self.parent.leito2.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito2.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
                 self.parent.leito2.child_paciente.data_entrada = self.txt_data_entrada.GetLineText(0)
@@ -268,12 +268,15 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito2.child_paciente.genero = self.txt_genero.GetLineText(0)
                 self.parent.leito2.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito2.child_paciente.medico = self.txt_medico.GetLineText(0)
+
+                self.parent.leito2.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito2.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))                
                 
                 self.parent.updateLeito(self, self.leito)
                 
             elif self.leito == 3:
-                self.parent.leito3.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito3.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito3.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito3.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
 
                 self.parent.leito3.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito3.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -284,11 +287,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito3.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito3.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito3.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito3.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 4:
-                self.parent.leito4.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito4.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito4.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito4.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito4.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito4.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -299,11 +305,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito4.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito4.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito4.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito4.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 5:
-                self.parent.leito5.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito5.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito5.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito5.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito5.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito5.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -314,11 +323,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito5.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito5.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito5.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito5.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
 
             elif self.leito == 6:
-                self.parent.leito6.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito6.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito6.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito6.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito6.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito6.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -329,11 +341,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito6.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito6.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito6.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito6.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 7:
-                self.parent.leito7.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito7.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito7.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito7.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
 
                 self.parent.leito7.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito7.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -344,11 +359,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito7.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito7.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito7.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito7.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 8:
-                self.parent.leito8.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito8.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito8.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito8.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito8.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito8.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -359,11 +377,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito8.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito8.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito8.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito8.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 9:
-                self.parent.leito9.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito9.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito9.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito9.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito9.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito9.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -374,11 +395,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito9.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito9.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito9.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito9.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
 
             elif self.leito == 10:
-                self.parent.leito10.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito10.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito10.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito10.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito10.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito10.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -389,11 +413,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito10.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito10.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito10.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito10.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 11:
-                self.parent.leito11.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito11.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito11.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito11.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito11.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito11.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -404,11 +431,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito11.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito11.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito11.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito11.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 12:
-                self.parent.leito12.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito12.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito12.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito12.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
 
                 self.parent.leito12.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito12.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -419,11 +449,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito12.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito12.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito12.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))
+                self.parent.leito12.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 13:
-                self.parent.leito13.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito13.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito13.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito13.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito13.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito13.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -434,11 +467,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito13.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito13.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito13.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito13.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)
 
             elif self.leito == 14:
-                self.parent.leito14.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito14.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito14.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito14.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito14.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito14.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -448,12 +484,15 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito14.child_paciente.genero = self.txt_genero.GetLineText(0)
                 self.parent.leito14.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito14.child_paciente.medico = self.txt_medico.GetLineText(0)
+                
+                self.parent.leito14.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito14.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
 
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 15:
-                self.parent.leito15.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito15.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito15.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito15.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito15.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito15.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -464,11 +503,14 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito15.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito15.child_paciente.medico = self.txt_medico.GetLineText(0)
 
+                self.parent.leito15.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito15.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
+
                 self.parent.updateLeito(self, self.leito)                
                 
             elif self.leito == 16:
-                self.parent.leito16.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
-                self.parent.leito16.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
+                #self.parent.leito16.child_paciente.lbl_nome.SetLabel(self.txt_nome.GetLineText(0))
+                #self.parent.leito16.child_paciente.lbl_prontuario.SetLabel(self.txt_prontuario.GetLineText(0))
                 
                 self.parent.leito16.child_paciente.nome = self.txt_nome.GetLineText(0)
                 self.parent.leito16.child_paciente.prontuario = self.txt_prontuario.GetLineText(0)
@@ -478,6 +520,9 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
                 self.parent.leito16.child_paciente.genero = self.txt_genero.GetLineText(0)
                 self.parent.leito16.child_paciente.data_nascimento = self.txt_birth_day.GetLineText(0)
                 self.parent.leito16.child_paciente.medico = self.txt_medico.GetLineText(0)
+
+                self.parent.leito16.child_paciente.prontuarioSetposition(self.txt_prontuario.GetLineText(0))                    
+                self.parent.leito16.child_paciente.nomeSetposition(self.txt_nome.GetLineText(0))
 
                 self.parent.updateLeito(self, self.leito)
 
@@ -527,8 +572,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.lst_disp_aloc.Delete(0)
 
           if self.leito == 1:
-            self.parent.leito1.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito1.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito1.child_paciente.prontuarioSetposition("")
+            self.parent.leito1.child_paciente.nomeSetposition("")
 
             self.parent.leito1.child_paciente.nome = ""
             self.parent.leito1.child_paciente.prontuario = ""
@@ -540,8 +585,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito1.child_paciente.medico = ""
 
           elif self.leito == 2:
-            self.parent.leito2.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito2.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito2.child_paciente.prontuarioSetposition("")
+            self.parent.leito2.child_paciente.nomeSetposition("")
 
             self.parent.leito2.child_paciente.nome = ""
             self.parent.leito2.child_paciente.prontuario = ""
@@ -553,8 +598,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito2.child_paciente.medico = ""
             
           elif self.leito == 3:
-            self.parent.leito3.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito3.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito3.child_paciente.prontuarioSetposition("")
+            self.parent.leito3.child_paciente.nomeSetposition("")
 
             self.parent.leito3.child_paciente.nome = ""
             self.parent.leito3.child_paciente.prontuario = ""
@@ -566,8 +611,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito3.child_paciente.medico = ""
 
           elif self.leito == 4:
-            self.parent.leito4.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito4.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito4.child_paciente.prontuarioSetposition("")
+            self.parent.leito4.child_paciente.nomeSetposition("")
 
             self.parent.leito4.child_paciente.nome = ""
             self.parent.leito4.child_paciente.prontuario = ""
@@ -579,8 +624,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito4.child_paciente.medico = ""
 
           elif self.leito == 5:
-            self.parent.leito5.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito5.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito5.child_paciente.prontuarioSetposition("")
+            self.parent.leito5.child_paciente.nomeSetposition("")
 
             self.parent.leito5.child_paciente.nome = ""
             self.parent.leito5.child_paciente.prontuario = ""
@@ -592,8 +637,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito5.child_paciente.medico = ""
 
           elif self.leito == 6:
-            self.parent.leito6.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito6.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito6.child_paciente.prontuarioSetposition("")
+            self.parent.leito6.child_paciente.nomeSetposition("")
 
             self.parent.leito6.child_paciente.nome = ""
             self.parent.leito6.child_paciente.prontuario = ""
@@ -605,8 +650,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito6.child_paciente.medico = ""
 
           elif self.leito == 7:
-            self.parent.leito7.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito7.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito7.child_paciente.prontuarioSetposition("")
+            self.parent.leito7.child_paciente.nomeSetposition("")
 
             self.parent.leito7.child_paciente.nome = ""
             self.parent.leito7.child_paciente.prontuario = ""
@@ -618,8 +663,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito7.child_paciente.medico = ""
 
           elif self.leito == 8:
-            self.parent.leito8.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito8.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito8.child_paciente.prontuarioSetposition("")
+            self.parent.leito8.child_paciente.nomeSetposition("")
 
             self.parent.leito8.child_paciente.nome = ""
             self.parent.leito8.child_paciente.prontuario = ""
@@ -631,8 +676,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito8.child_paciente.medico = ""
 
           elif self.leito == 9:
-            self.parent.leito9.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito9.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito9.child_paciente.prontuarioSetposition("")
+            self.parent.leito9.child_paciente.nomeSetposition("")
 
             self.parent.leito9.child_paciente.nome = ""
             self.parent.leito9.child_paciente.prontuario = ""
@@ -644,8 +689,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito9.child_paciente.medico = ""
             
           elif self.leito == 10:
-            self.parent.leito10.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito10.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito10.child_paciente.prontuarioSetposition("")
+            self.parent.leito10.child_paciente.nomeSetposition("")
 
             self.parent.leito10.child_paciente.nome = ""
             self.parent.leito10.child_paciente.prontuario = ""
@@ -657,8 +702,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito10.child_paciente.medico = ""
 
           elif self.leito == 11:
-            self.parent.leito11.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito11.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito11.child_paciente.prontuarioSetposition("")
+            self.parent.leito11.child_paciente.nomeSetposition("")
 
             self.parent.leito11.child_paciente.nome = ""
             self.parent.leito11.child_paciente.prontuario = ""
@@ -670,8 +715,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito11.child_paciente.medico = ""
 
           elif self.leito == 12:
-            self.parent.leito12.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito12.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito12.child_paciente.prontuarioSetposition("")
+            self.parent.leito12.child_paciente.nomeSetposition("")
 
             self.parent.leito12.child_paciente.nome = ""
             self.parent.leito12.child_paciente.prontuario = ""
@@ -683,8 +728,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito12.child_paciente.medico = ""
 
           elif self.leito == 13:
-            self.parent.leito13.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito13.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito13.child_paciente.prontuarioSetposition("")
+            self.parent.leito13.child_paciente.nomeSetposition("")
 
             self.parent.leito13.child_paciente.nome = ""
             self.parent.leito13.child_paciente.prontuario = ""
@@ -696,8 +741,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito13.child_paciente.medico = ""
 
           elif self.leito == 14:
-            self.parent.leito14.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito14.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito14.child_paciente.prontuarioSetposition("")
+            self.parent.leito14.child_paciente.nomeSetposition("")
 
             self.parent.leito14.child_paciente.nome = ""
             self.parent.leito14.child_paciente.prontuario = ""
@@ -709,8 +754,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito14.child_paciente.medico = ""
 
           elif self.leito == 15:
-            self.parent.leito15.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito15.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito15.child_paciente.prontuarioSetposition("")
+            self.parent.leito15.child_paciente.nomeSetposition("")
 
             self.parent.leito15.child_paciente.nome = ""
             self.parent.leito15.child_paciente.prontuario = ""
@@ -722,8 +767,8 @@ class Cadastro(wx.Frame):	#classe herdada da classe "Frame"
             self.parent.leito15.child_paciente.medico = ""
 
           elif self.leito == 16:
-            self.parent.leito16.child_paciente.lbl_nome.SetLabel("")
-            self.parent.leito16.child_paciente.lbl_prontuario.SetLabel("")
+            self.parent.leito16.child_paciente.prontuarioSetposition("")
+            self.parent.leito16.child_paciente.nomeSetposition("")
 
             self.parent.leito16.child_paciente.nome = ""
             self.parent.leito16.child_paciente.prontuario = ""
