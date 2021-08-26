@@ -54,7 +54,7 @@ class Udp(wx.Panel):
 
         try:
             self.sock_udp.sendto(msg, ('<broadcast>', self.udp_port))
-            print msg
+            #print msg
         except:
             print "Socekt Error...broadcast"
 

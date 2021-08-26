@@ -6,8 +6,6 @@ from tinydb import where
 import wx
 import struct
 import modulos
-import tcp_server
-import udp_server
 import leito
 import paciente
 import dispositivo
@@ -51,11 +49,11 @@ class MyForm(wx.Frame): #classe herdada da classe "Frame"
 
         """ Instantiate UDP server
         """
-        #self.broadcom = udp.Udp(ip_addr, UDP_PORT, TCP_PORT)
+        self.broadcom = udp.Udp(ip_addr, UDP_PORT, TCP_PORT)
 
         """ Instantiate TCP server
         """
-        #self.tcp = tcp.Tcp(11, TCP_PORT)
+        self.tcp = tcp.Tcp(11, TCP_PORT)
 
 
         """ Instantiate Leitos
